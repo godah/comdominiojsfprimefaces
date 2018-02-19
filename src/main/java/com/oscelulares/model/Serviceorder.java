@@ -72,7 +72,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Serviceorder.findByUndone", query = "SELECT s FROM Serviceorder s WHERE s.undone = :undone"),
     @NamedQuery(name = "Serviceorder.findByAbandoned", query = "SELECT s FROM Serviceorder s WHERE s.abandoned = :abandoned"),
     @NamedQuery(name = "Serviceorder.findByTechnote", query = "SELECT s FROM Serviceorder s WHERE s.technote = :technote"),
-    @NamedQuery(name = "Serviceorder.findBySignal", query = "SELECT s FROM Serviceorder s WHERE s.signal = :signal"),
+    @NamedQuery(name = "Serviceorder.findBySignal", query = "SELECT s FROM Serviceorder s WHERE s.paysignal = :paysignal"),
     @NamedQuery(name = "Serviceorder.findByRest", query = "SELECT s FROM Serviceorder s WHERE s.rest = :rest")})
 public class Serviceorder implements Serializable {
 
@@ -201,8 +201,8 @@ public class Serviceorder implements Serializable {
     @Column(name = "technote")
     private String technote;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Column(name = "signal")
-    private BigDecimal signal;
+    @Column(name = "paysignal")
+    private BigDecimal paysignal;
     @Column(name = "rest")
     private BigDecimal rest;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "serviceorderId")
@@ -525,11 +525,11 @@ public class Serviceorder implements Serializable {
     }
 
     public BigDecimal getSignal() {
-        return signal;
+        return paysignal;
     }
 
-    public void setSignal(BigDecimal signal) {
-        this.signal = signal;
+    public void setSignal(BigDecimal paysignal) {
+        this.paysignal = paysignal;
     }
 
     public BigDecimal getRest() {

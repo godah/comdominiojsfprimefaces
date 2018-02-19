@@ -39,6 +39,15 @@
             </p:layoutUnit>
 
             <p:layoutUnit position="center">
+                
+                <div style="text-align: right;font-style: italic;">
+                    <b><h:outputText value="Usuário: "/></b>
+                    <h:outputText value="#{MBSession.usuarios.name}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"/>
+                    <h:form>
+                        <p:commandButton action="#{autenticadorBean.registraLogout()}" icon="ui-icon-extlink" value="Sair"/>
+                    </h:form>
+                </div>
+                
                 <ui:insert name="body"/>
             </p:layoutUnit>
 

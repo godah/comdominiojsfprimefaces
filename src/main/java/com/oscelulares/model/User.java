@@ -38,6 +38,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "User.findByName", query = "SELECT u FROM User u WHERE u.name = :name"),
     @NamedQuery(name = "User.findByLogin", query = "SELECT u FROM User u WHERE u.login = :login"),
     @NamedQuery(name = "User.findByPasswd", query = "SELECT u FROM User u WHERE u.passwd = :passwd"),
+    @NamedQuery(name = "User.findBySession", query = "SELECT u FROM User u WHERE u.session = :session"),
     @NamedQuery(name = "User.findByPhone", query = "SELECT u FROM User u WHERE u.phone = :phone")})
 public class User implements Serializable {
 
@@ -71,6 +72,8 @@ public class User implements Serializable {
     private Usertype usertypeId;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
     private Collection<Serviceorder> serviceorderCollection;
+    @Column(name = "session")
+    private String session;
 
     public User() {
     }
@@ -166,6 +169,20 @@ public class User implements Serializable {
     @Override
     public String toString() {
         return "com.oscelulares.model.User[ id=" + id + " ]";
+    }
+
+    /**
+     * @return the session
+     */
+    public String getSession() {
+        return session;
+    }
+
+    /**
+     * @param session the session to set
+     */
+    public void setSession(String session) {
+        this.session = session;
     }
     
 }
