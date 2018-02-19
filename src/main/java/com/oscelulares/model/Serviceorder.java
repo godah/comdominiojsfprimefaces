@@ -89,9 +89,6 @@ public class Serviceorder implements Serializable {
     @Column(name = "date")
     @Temporal(TemporalType.TIMESTAMP)
     private Date date;
-    @Size(max = 45)
-    @Column(name = "serviceordercol")
-    private String serviceordercol;
     @Size(max = 15)
     @Column(name = "imei")
     private String imei;
@@ -274,14 +271,6 @@ public class Serviceorder implements Serializable {
 
     public void setDate(Date date) {
         this.date = date;
-    }
-
-    public String getServiceordercol() {
-        return serviceordercol;
-    }
-
-    public void setServiceordercol(String serviceordercol) {
-        this.serviceordercol = serviceordercol;
     }
 
     public String getImei() {

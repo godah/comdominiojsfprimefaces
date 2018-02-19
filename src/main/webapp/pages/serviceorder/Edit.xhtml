@@ -18,8 +18,6 @@
                         <p:inputText id="code" value="#{serviceorderController.selected.code}" title="#{bundle.EditServiceorderTitle_code}" required="true" requiredMessage="#{bundle.EditServiceorderRequiredMessage_code}"/>
                         <p:outputLabel value="#{bundle.EditServiceorderLabel_date}" for="date" />
                         <p:calendar id="date" pattern="MM/dd/yyyy HH:mm:ss" value="#{serviceorderController.selected.date}" title="#{bundle.EditServiceorderTitle_date}"  showOn="button"/>
-                        <p:outputLabel value="#{bundle.EditServiceorderLabel_serviceordercol}" for="serviceordercol" />
-                        <p:inputText id="serviceordercol" value="#{serviceorderController.selected.serviceordercol}" title="#{bundle.EditServiceorderTitle_serviceordercol}" />
                         <p:outputLabel value="#{bundle.EditServiceorderLabel_imei}" for="imei" />
                         <p:inputText id="imei" value="#{serviceorderController.selected.imei}" title="#{bundle.EditServiceorderTitle_imei}" />
                         <p:outputLabel value="#{bundle.EditServiceorderLabel_lockpasswd}" for="lockpasswd" />
