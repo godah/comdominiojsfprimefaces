@@ -1,9 +1,10 @@
-package com.oscelulares.jsf;
+package com.oscelulares.controller;
 
-import com.oscelulares.model.Model;
+import com.oscelulares.model.User;
 import com.oscelulares.jsf.util.JsfUtil;
 import com.oscelulares.jsf.util.JsfUtil.PersistAction;
-import com.oscelulares.controller.ModelFacade;
+import com.oscelulares.facecade.UserFacade;
+import com.oscelulares.util.Senhas;
 
 import java.io.Serializable;
 import java.util.List;
@@ -19,23 +20,23 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
-@Named("modelController")
+@Named("userController")
 @SessionScoped
-public class ModelController implements Serializable {
+public class UserController implements Serializable {
 
     @EJB
-    private com.oscelulares.controller.ModelFacade ejbFacade;
-    private List<Model> items = null;
-    private Model selected;
+    private com.oscelulares.facecade.UserFacade ejbFacade;
+    private List<User> items = null;
+    private User selected;
 
-    public ModelController() {
+    public UserController() {
     }
 
-    public Model getSelected() {
+    public User getSelected() {
         return selected;
     }
 
-    public void setSelected(Model selected) {
+    public void setSelected(User selected) {
         this.selected = selected;
     }
 
@@ -45,36 +46,39 @@ public class ModelController implements Serializable {
     protected void initializeEmbeddableKey() {
     }
 
-    private ModelFacade getFacade() {
+    private UserFacade getFacade() {
         return ejbFacade;
     }
 
-    public Model prepareCreate() {
-        selected = new Model();
+    public User prepareCreate() {
+        selected = new User();
         initializeEmbeddableKey();
         return selected;
     }
 
     public void create() {
-        persist(PersistAction.CREATE, ResourceBundle.getBundle("/Bundle").getString("ModelCreated"));
+        selected.setPasswd(Senhas.encript(selected.getPasswd()));//Emcripta a senha para salvar no BD
+        System.out.println("Senha MD5: "+selected.getPasswd());
+        persist(PersistAction.CREATE, ResourceBundle.getBundle("/Bundle").getString("UserCreated"));
         if (!JsfUtil.isValidationFailed()) {
             items = null;    // Invalidate list of items to trigger re-query.
         }
     }
 
     public void update() {
-        persist(PersistAction.UPDATE, ResourceBundle.getBundle("/Bundle").getString("ModelUpdated"));
+        selected.setPasswd(Senhas.encript(selected.getPasswd()));//Emcripta a senha para salvar no BD
+        persist(PersistAction.UPDATE, ResourceBundle.getBundle("/Bundle").getString("UserUpdated"));
     }
 
     public void destroy() {
-        persist(PersistAction.DELETE, ResourceBundle.getBundle("/Bundle").getString("ModelDeleted"));
+        persist(PersistAction.DELETE, ResourceBundle.getBundle("/Bundle").getString("UserDeleted"));
         if (!JsfUtil.isValidationFailed()) {
             selected = null; // Remove selection
             items = null;    // Invalidate list of items to trigger re-query.
         }
     }
 
-    public List<Model> getItems() {
+    public List<User> getItems() {
         if (items == null) {
             items = getFacade().findAll();
         }
@@ -109,29 +113,29 @@ public class ModelController implements Serializable {
         }
     }
 
-    public Model getModel(java.lang.Integer id) {
+    public User getUser(java.lang.Integer id) {
         return getFacade().find(id);
     }
 
-    public List<Model> getItemsAvailableSelectMany() {
+    public List<User> getItemsAvailableSelectMany() {
         return getFacade().findAll();
     }
 
-    public List<Model> getItemsAvailableSelectOne() {
+    public List<User> getItemsAvailableSelectOne() {
         return getFacade().findAll();
     }
 
-    @FacesConverter(forClass = Model.class)
-    public static class ModelControllerConverter implements Converter {
+    @FacesConverter(forClass = User.class)
+    public static class UserControllerConverter implements Converter {
 
         @Override
         public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
             if (value == null || value.length() == 0) {
                 return null;
             }
-            ModelController controller = (ModelController) facesContext.getApplication().getELResolver().
-                    getValue(facesContext.getELContext(), null, "modelController");
-            return controller.getModel(getKey(value));
+            UserController controller = (UserController) facesContext.getApplication().getELResolver().
+                    getValue(facesContext.getELContext(), null, "userController");
+            return controller.getUser(getKey(value));
         }
 
         java.lang.Integer getKey(String value) {
@@ -151,11 +155,11 @@ public class ModelController implements Serializable {
             if (object == null) {
                 return null;
             }
-            if (object instanceof Model) {
-                Model o = (Model) object;
+            if (object instanceof User) {
+                User o = (User) object;
                 return getStringKey(o.getId());
             } else {
-                Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), Model.class.getName()});
+                Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), User.class.getName()});
                 return null;
             }
         }

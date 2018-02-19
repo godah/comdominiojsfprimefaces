@@ -41,7 +41,6 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Serviceorder.findById", query = "SELECT s FROM Serviceorder s WHERE s.id = :id"),
     @NamedQuery(name = "Serviceorder.findByCode", query = "SELECT s FROM Serviceorder s WHERE s.code = :code"),
     @NamedQuery(name = "Serviceorder.findByDate", query = "SELECT s FROM Serviceorder s WHERE s.date = :date"),
-    @NamedQuery(name = "Serviceorder.findByServiceordercol", query = "SELECT s FROM Serviceorder s WHERE s.serviceordercol = :serviceordercol"),
     @NamedQuery(name = "Serviceorder.findByImei", query = "SELECT s FROM Serviceorder s WHERE s.imei = :imei"),
     @NamedQuery(name = "Serviceorder.findByLockpasswd", query = "SELECT s FROM Serviceorder s WHERE s.lockpasswd = :lockpasswd"),
     @NamedQuery(name = "Serviceorder.findByBatery", query = "SELECT s FROM Serviceorder s WHERE s.batery = :batery"),

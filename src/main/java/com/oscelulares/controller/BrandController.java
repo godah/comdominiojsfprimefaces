@@ -1,9 +1,9 @@
-package com.oscelulares.jsf;
+package com.oscelulares.controller;
 
-import com.oscelulares.model.Carrierservice;
+import com.oscelulares.model.Brand;
 import com.oscelulares.jsf.util.JsfUtil;
 import com.oscelulares.jsf.util.JsfUtil.PersistAction;
-import com.oscelulares.controller.CarrierserviceFacade;
+import com.oscelulares.facecade.BrandFacade;
 
 import java.io.Serializable;
 import java.util.List;
@@ -19,23 +19,23 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
-@Named("carrierserviceController")
+@Named("brandController")
 @SessionScoped
-public class CarrierserviceController implements Serializable {
+public class BrandController implements Serializable {
 
     @EJB
-    private com.oscelulares.controller.CarrierserviceFacade ejbFacade;
-    private List<Carrierservice> items = null;
-    private Carrierservice selected;
+    private com.oscelulares.facecade.BrandFacade ejbFacade;
+    private List<Brand> items = null;
+    private Brand selected;
 
-    public CarrierserviceController() {
+    public BrandController() {
     }
 
-    public Carrierservice getSelected() {
+    public Brand getSelected() {
         return selected;
     }
 
-    public void setSelected(Carrierservice selected) {
+    public void setSelected(Brand selected) {
         this.selected = selected;
     }
 
@@ -45,36 +45,36 @@ public class CarrierserviceController implements Serializable {
     protected void initializeEmbeddableKey() {
     }
 
-    private CarrierserviceFacade getFacade() {
+    private BrandFacade getFacade() {
         return ejbFacade;
     }
 
-    public Carrierservice prepareCreate() {
-        selected = new Carrierservice();
+    public Brand prepareCreate() {
+        selected = new Brand();
         initializeEmbeddableKey();
         return selected;
     }
 
     public void create() {
-        persist(PersistAction.CREATE, ResourceBundle.getBundle("/Bundle").getString("CarrierserviceCreated"));
+        persist(PersistAction.CREATE, ResourceBundle.getBundle("/Bundle").getString("BrandCreated"));
         if (!JsfUtil.isValidationFailed()) {
             items = null;    // Invalidate list of items to trigger re-query.
         }
     }
 
     public void update() {
-        persist(PersistAction.UPDATE, ResourceBundle.getBundle("/Bundle").getString("CarrierserviceUpdated"));
+        persist(PersistAction.UPDATE, ResourceBundle.getBundle("/Bundle").getString("BrandUpdated"));
     }
 
     public void destroy() {
-        persist(PersistAction.DELETE, ResourceBundle.getBundle("/Bundle").getString("CarrierserviceDeleted"));
+        persist(PersistAction.DELETE, ResourceBundle.getBundle("/Bundle").getString("BrandDeleted"));
         if (!JsfUtil.isValidationFailed()) {
             selected = null; // Remove selection
             items = null;    // Invalidate list of items to trigger re-query.
         }
     }
 
-    public List<Carrierservice> getItems() {
+    public List<Brand> getItems() {
         if (items == null) {
             items = getFacade().findAll();
         }
@@ -109,29 +109,29 @@ public class CarrierserviceController implements Serializable {
         }
     }
 
-    public Carrierservice getCarrierservice(java.lang.Integer id) {
+    public Brand getBrand(java.lang.Integer id) {
         return getFacade().find(id);
     }
 
-    public List<Carrierservice> getItemsAvailableSelectMany() {
+    public List<Brand> getItemsAvailableSelectMany() {
         return getFacade().findAll();
     }
 
-    public List<Carrierservice> getItemsAvailableSelectOne() {
+    public List<Brand> getItemsAvailableSelectOne() {
         return getFacade().findAll();
     }
 
-    @FacesConverter(forClass = Carrierservice.class)
-    public static class CarrierserviceControllerConverter implements Converter {
+    @FacesConverter(forClass = Brand.class)
+    public static class BrandControllerConverter implements Converter {
 
         @Override
         public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
             if (value == null || value.length() == 0) {
                 return null;
             }
-            CarrierserviceController controller = (CarrierserviceController) facesContext.getApplication().getELResolver().
-                    getValue(facesContext.getELContext(), null, "carrierserviceController");
-            return controller.getCarrierservice(getKey(value));
+            BrandController controller = (BrandController) facesContext.getApplication().getELResolver().
+                    getValue(facesContext.getELContext(), null, "brandController");
+            return controller.getBrand(getKey(value));
         }
 
         java.lang.Integer getKey(String value) {
@@ -151,11 +151,11 @@ public class CarrierserviceController implements Serializable {
             if (object == null) {
                 return null;
             }
-            if (object instanceof Carrierservice) {
-                Carrierservice o = (Carrierservice) object;
+            if (object instanceof Brand) {
+                Brand o = (Brand) object;
                 return getStringKey(o.getId());
             } else {
-                Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), Carrierservice.class.getName()});
+                Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), Brand.class.getName()});
                 return null;
             }
         }

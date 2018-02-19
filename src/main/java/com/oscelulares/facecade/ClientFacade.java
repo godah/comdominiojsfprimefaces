@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.oscelulares.controller;
+package com.oscelulares.facecade;
 
-import com.oscelulares.model.Model;
+import com.oscelulares.model.Client;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -15,7 +15,7 @@ import javax.persistence.PersistenceContext;
  * @author luciano
  */
 @Stateless
-public class ModelFacade extends AbstractFacade<Model> {
+public class ClientFacade extends AbstractFacade<Client> {
 
     @PersistenceContext(unitName = "com_oscelulares_war_1.0-SNAPSHOTPU")
     private EntityManager em;
@@ -25,8 +25,8 @@ public class ModelFacade extends AbstractFacade<Model> {
         return em;
     }
 
-    public ModelFacade() {
-        super(Model.class);
+    public ClientFacade() {
+        super(Client.class);
     }
     
 }

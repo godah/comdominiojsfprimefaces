@@ -1,9 +1,9 @@
-package com.oscelulares.jsf;
+package com.oscelulares.controller;
 
-import com.oscelulares.model.Serviceorder;
+import com.oscelulares.model.Client;
 import com.oscelulares.jsf.util.JsfUtil;
 import com.oscelulares.jsf.util.JsfUtil.PersistAction;
-import com.oscelulares.controller.ServiceorderFacade;
+import com.oscelulares.facecade.ClientFacade;
 
 import java.io.Serializable;
 import java.util.List;
@@ -19,23 +19,23 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
-@Named("serviceorderController")
+@Named("clientController")
 @SessionScoped
-public class ServiceorderController implements Serializable {
+public class ClientController implements Serializable {
 
     @EJB
-    private com.oscelulares.controller.ServiceorderFacade ejbFacade;
-    private List<Serviceorder> items = null;
-    private Serviceorder selected;
+    private com.oscelulares.facecade.ClientFacade ejbFacade;
+    private List<Client> items = null;
+    private Client selected;
 
-    public ServiceorderController() {
+    public ClientController() {
     }
 
-    public Serviceorder getSelected() {
+    public Client getSelected() {
         return selected;
     }
 
-    public void setSelected(Serviceorder selected) {
+    public void setSelected(Client selected) {
         this.selected = selected;
     }
 
@@ -45,36 +45,36 @@ public class ServiceorderController implements Serializable {
     protected void initializeEmbeddableKey() {
     }
 
-    private ServiceorderFacade getFacade() {
+    private ClientFacade getFacade() {
         return ejbFacade;
     }
 
-    public Serviceorder prepareCreate() {
-        selected = new Serviceorder();
+    public Client prepareCreate() {
+        selected = new Client();
         initializeEmbeddableKey();
         return selected;
     }
 
     public void create() {
-        persist(PersistAction.CREATE, ResourceBundle.getBundle("/Bundle").getString("ServiceorderCreated"));
+        persist(PersistAction.CREATE, ResourceBundle.getBundle("/Bundle").getString("ClientCreated"));
         if (!JsfUtil.isValidationFailed()) {
             items = null;    // Invalidate list of items to trigger re-query.
         }
     }
 
     public void update() {
-        persist(PersistAction.UPDATE, ResourceBundle.getBundle("/Bundle").getString("ServiceorderUpdated"));
+        persist(PersistAction.UPDATE, ResourceBundle.getBundle("/Bundle").getString("ClientUpdated"));
     }
 
     public void destroy() {
-        persist(PersistAction.DELETE, ResourceBundle.getBundle("/Bundle").getString("ServiceorderDeleted"));
+        persist(PersistAction.DELETE, ResourceBundle.getBundle("/Bundle").getString("ClientDeleted"));
         if (!JsfUtil.isValidationFailed()) {
             selected = null; // Remove selection
             items = null;    // Invalidate list of items to trigger re-query.
         }
     }
 
-    public List<Serviceorder> getItems() {
+    public List<Client> getItems() {
         if (items == null) {
             items = getFacade().findAll();
         }
@@ -109,29 +109,29 @@ public class ServiceorderController implements Serializable {
         }
     }
 
-    public Serviceorder getServiceorder(java.lang.Integer id) {
+    public Client getClient(java.lang.Integer id) {
         return getFacade().find(id);
     }
 
-    public List<Serviceorder> getItemsAvailableSelectMany() {
+    public List<Client> getItemsAvailableSelectMany() {
         return getFacade().findAll();
     }
 
-    public List<Serviceorder> getItemsAvailableSelectOne() {
+    public List<Client> getItemsAvailableSelectOne() {
         return getFacade().findAll();
     }
 
-    @FacesConverter(forClass = Serviceorder.class)
-    public static class ServiceorderControllerConverter implements Converter {
+    @FacesConverter(forClass = Client.class)
+    public static class ClientControllerConverter implements Converter {
 
         @Override
         public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
             if (value == null || value.length() == 0) {
                 return null;
             }
-            ServiceorderController controller = (ServiceorderController) facesContext.getApplication().getELResolver().
-                    getValue(facesContext.getELContext(), null, "serviceorderController");
-            return controller.getServiceorder(getKey(value));
+            ClientController controller = (ClientController) facesContext.getApplication().getELResolver().
+                    getValue(facesContext.getELContext(), null, "clientController");
+            return controller.getClient(getKey(value));
         }
 
         java.lang.Integer getKey(String value) {
@@ -151,11 +151,11 @@ public class ServiceorderController implements Serializable {
             if (object == null) {
                 return null;
             }
-            if (object instanceof Serviceorder) {
-                Serviceorder o = (Serviceorder) object;
+            if (object instanceof Client) {
+                Client o = (Client) object;
                 return getStringKey(o.getId());
             } else {
-                Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), Serviceorder.class.getName()});
+                Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), Client.class.getName()});
                 return null;
             }
         }

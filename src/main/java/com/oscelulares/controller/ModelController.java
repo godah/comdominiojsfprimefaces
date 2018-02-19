@@ -1,9 +1,9 @@
-package com.oscelulares.jsf;
+package com.oscelulares.controller;
 
-import com.oscelulares.model.Brand;
+import com.oscelulares.model.Model;
 import com.oscelulares.jsf.util.JsfUtil;
 import com.oscelulares.jsf.util.JsfUtil.PersistAction;
-import com.oscelulares.controller.BrandFacade;
+import com.oscelulares.facecade.ModelFacade;
 
 import java.io.Serializable;
 import java.util.List;
@@ -19,23 +19,23 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
-@Named("brandController")
+@Named("modelController")
 @SessionScoped
-public class BrandController implements Serializable {
+public class ModelController implements Serializable {
 
     @EJB
-    private com.oscelulares.controller.BrandFacade ejbFacade;
-    private List<Brand> items = null;
-    private Brand selected;
+    private com.oscelulares.facecade.ModelFacade ejbFacade;
+    private List<Model> items = null;
+    private Model selected;
 
-    public BrandController() {
+    public ModelController() {
     }
 
-    public Brand getSelected() {
+    public Model getSelected() {
         return selected;
     }
 
-    public void setSelected(Brand selected) {
+    public void setSelected(Model selected) {
         this.selected = selected;
     }
 
@@ -45,36 +45,36 @@ public class BrandController implements Serializable {
     protected void initializeEmbeddableKey() {
     }
 
-    private BrandFacade getFacade() {
+    private ModelFacade getFacade() {
         return ejbFacade;
     }
 
-    public Brand prepareCreate() {
-        selected = new Brand();
+    public Model prepareCreate() {
+        selected = new Model();
         initializeEmbeddableKey();
         return selected;
     }
 
     public void create() {
-        persist(PersistAction.CREATE, ResourceBundle.getBundle("/Bundle").getString("BrandCreated"));
+        persist(PersistAction.CREATE, ResourceBundle.getBundle("/Bundle").getString("ModelCreated"));
         if (!JsfUtil.isValidationFailed()) {
             items = null;    // Invalidate list of items to trigger re-query.
         }
     }
 
     public void update() {
-        persist(PersistAction.UPDATE, ResourceBundle.getBundle("/Bundle").getString("BrandUpdated"));
+        persist(PersistAction.UPDATE, ResourceBundle.getBundle("/Bundle").getString("ModelUpdated"));
     }
 
     public void destroy() {
-        persist(PersistAction.DELETE, ResourceBundle.getBundle("/Bundle").getString("BrandDeleted"));
+        persist(PersistAction.DELETE, ResourceBundle.getBundle("/Bundle").getString("ModelDeleted"));
         if (!JsfUtil.isValidationFailed()) {
             selected = null; // Remove selection
             items = null;    // Invalidate list of items to trigger re-query.
         }
     }
 
-    public List<Brand> getItems() {
+    public List<Model> getItems() {
         if (items == null) {
             items = getFacade().findAll();
         }
@@ -109,29 +109,29 @@ public class BrandController implements Serializable {
         }
     }
 
-    public Brand getBrand(java.lang.Integer id) {
+    public Model getModel(java.lang.Integer id) {
         return getFacade().find(id);
     }
 
-    public List<Brand> getItemsAvailableSelectMany() {
+    public List<Model> getItemsAvailableSelectMany() {
         return getFacade().findAll();
     }
 
-    public List<Brand> getItemsAvailableSelectOne() {
+    public List<Model> getItemsAvailableSelectOne() {
         return getFacade().findAll();
     }
 
-    @FacesConverter(forClass = Brand.class)
-    public static class BrandControllerConverter implements Converter {
+    @FacesConverter(forClass = Model.class)
+    public static class ModelControllerConverter implements Converter {
 
         @Override
         public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
             if (value == null || value.length() == 0) {
                 return null;
             }
-            BrandController controller = (BrandController) facesContext.getApplication().getELResolver().
-                    getValue(facesContext.getELContext(), null, "brandController");
-            return controller.getBrand(getKey(value));
+            ModelController controller = (ModelController) facesContext.getApplication().getELResolver().
+                    getValue(facesContext.getELContext(), null, "modelController");
+            return controller.getModel(getKey(value));
         }
 
         java.lang.Integer getKey(String value) {
@@ -151,11 +151,11 @@ public class BrandController implements Serializable {
             if (object == null) {
                 return null;
             }
-            if (object instanceof Brand) {
-                Brand o = (Brand) object;
+            if (object instanceof Model) {
+                Model o = (Model) object;
                 return getStringKey(o.getId());
             } else {
-                Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), Brand.class.getName()});
+                Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), Model.class.getName()});
                 return null;
             }
         }

@@ -1,9 +1,9 @@
-package com.oscelulares.jsf;
+package com.oscelulares.controller;
 
-import com.oscelulares.model.Usertype;
+import com.oscelulares.model.Budget;
 import com.oscelulares.jsf.util.JsfUtil;
 import com.oscelulares.jsf.util.JsfUtil.PersistAction;
-import com.oscelulares.controller.UsertypeFacade;
+import com.oscelulares.facecade.BudgetFacade;
 
 import java.io.Serializable;
 import java.util.List;
@@ -19,23 +19,23 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
-@Named("usertypeController")
+@Named("budgetController")
 @SessionScoped
-public class UsertypeController implements Serializable {
+public class BudgetController implements Serializable {
 
     @EJB
-    private com.oscelulares.controller.UsertypeFacade ejbFacade;
-    private List<Usertype> items = null;
-    private Usertype selected;
+    private com.oscelulares.facecade.BudgetFacade ejbFacade;
+    private List<Budget> items = null;
+    private Budget selected;
 
-    public UsertypeController() {
+    public BudgetController() {
     }
 
-    public Usertype getSelected() {
+    public Budget getSelected() {
         return selected;
     }
 
-    public void setSelected(Usertype selected) {
+    public void setSelected(Budget selected) {
         this.selected = selected;
     }
 
@@ -45,36 +45,36 @@ public class UsertypeController implements Serializable {
     protected void initializeEmbeddableKey() {
     }
 
-    private UsertypeFacade getFacade() {
+    private BudgetFacade getFacade() {
         return ejbFacade;
     }
 
-    public Usertype prepareCreate() {
-        selected = new Usertype();
+    public Budget prepareCreate() {
+        selected = new Budget();
         initializeEmbeddableKey();
         return selected;
     }
 
     public void create() {
-        persist(PersistAction.CREATE, ResourceBundle.getBundle("/Bundle").getString("UsertypeCreated"));
+        persist(PersistAction.CREATE, ResourceBundle.getBundle("/Bundle").getString("BudgetCreated"));
         if (!JsfUtil.isValidationFailed()) {
             items = null;    // Invalidate list of items to trigger re-query.
         }
     }
 
     public void update() {
-        persist(PersistAction.UPDATE, ResourceBundle.getBundle("/Bundle").getString("UsertypeUpdated"));
+        persist(PersistAction.UPDATE, ResourceBundle.getBundle("/Bundle").getString("BudgetUpdated"));
     }
 
     public void destroy() {
-        persist(PersistAction.DELETE, ResourceBundle.getBundle("/Bundle").getString("UsertypeDeleted"));
+        persist(PersistAction.DELETE, ResourceBundle.getBundle("/Bundle").getString("BudgetDeleted"));
         if (!JsfUtil.isValidationFailed()) {
             selected = null; // Remove selection
             items = null;    // Invalidate list of items to trigger re-query.
         }
     }
 
-    public List<Usertype> getItems() {
+    public List<Budget> getItems() {
         if (items == null) {
             items = getFacade().findAll();
         }
@@ -109,29 +109,29 @@ public class UsertypeController implements Serializable {
         }
     }
 
-    public Usertype getUsertype(java.lang.Integer id) {
+    public Budget getBudget(java.lang.Integer id) {
         return getFacade().find(id);
     }
 
-    public List<Usertype> getItemsAvailableSelectMany() {
+    public List<Budget> getItemsAvailableSelectMany() {
         return getFacade().findAll();
     }
 
-    public List<Usertype> getItemsAvailableSelectOne() {
+    public List<Budget> getItemsAvailableSelectOne() {
         return getFacade().findAll();
     }
 
-    @FacesConverter(forClass = Usertype.class)
-    public static class UsertypeControllerConverter implements Converter {
+    @FacesConverter(forClass = Budget.class)
+    public static class BudgetControllerConverter implements Converter {
 
         @Override
         public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
             if (value == null || value.length() == 0) {
                 return null;
             }
-            UsertypeController controller = (UsertypeController) facesContext.getApplication().getELResolver().
-                    getValue(facesContext.getELContext(), null, "usertypeController");
-            return controller.getUsertype(getKey(value));
+            BudgetController controller = (BudgetController) facesContext.getApplication().getELResolver().
+                    getValue(facesContext.getELContext(), null, "budgetController");
+            return controller.getBudget(getKey(value));
         }
 
         java.lang.Integer getKey(String value) {
@@ -151,11 +151,11 @@ public class UsertypeController implements Serializable {
             if (object == null) {
                 return null;
             }
-            if (object instanceof Usertype) {
-                Usertype o = (Usertype) object;
+            if (object instanceof Budget) {
+                Budget o = (Budget) object;
                 return getStringKey(o.getId());
             } else {
-                Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), Usertype.class.getName()});
+                Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), Budget.class.getName()});
                 return null;
             }
         }

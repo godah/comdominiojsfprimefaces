@@ -1,9 +1,9 @@
-package com.oscelulares.jsf;
+package com.oscelulares.controller;
 
-import com.oscelulares.model.User;
+import com.oscelulares.model.Serviceorder;
 import com.oscelulares.jsf.util.JsfUtil;
 import com.oscelulares.jsf.util.JsfUtil.PersistAction;
-import com.oscelulares.controller.UserFacade;
+import com.oscelulares.facecade.ServiceorderFacade;
 
 import java.io.Serializable;
 import java.util.List;
@@ -19,23 +19,23 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
-@Named("userController")
+@Named("serviceorderController")
 @SessionScoped
-public class UserController implements Serializable {
+public class ServiceorderController implements Serializable {
 
     @EJB
-    private com.oscelulares.controller.UserFacade ejbFacade;
-    private List<User> items = null;
-    private User selected;
+    private com.oscelulares.facecade.ServiceorderFacade ejbFacade;
+    private List<Serviceorder> items = null;
+    private Serviceorder selected;
 
-    public UserController() {
+    public ServiceorderController() {
     }
 
-    public User getSelected() {
+    public Serviceorder getSelected() {
         return selected;
     }
 
-    public void setSelected(User selected) {
+    public void setSelected(Serviceorder selected) {
         this.selected = selected;
     }
 
@@ -45,36 +45,36 @@ public class UserController implements Serializable {
     protected void initializeEmbeddableKey() {
     }
 
-    private UserFacade getFacade() {
+    private ServiceorderFacade getFacade() {
         return ejbFacade;
     }
 
-    public User prepareCreate() {
-        selected = new User();
+    public Serviceorder prepareCreate() {
+        selected = new Serviceorder();
         initializeEmbeddableKey();
         return selected;
     }
 
     public void create() {
-        persist(PersistAction.CREATE, ResourceBundle.getBundle("/Bundle").getString("UserCreated"));
+        persist(PersistAction.CREATE, ResourceBundle.getBundle("/Bundle").getString("ServiceorderCreated"));
         if (!JsfUtil.isValidationFailed()) {
             items = null;    // Invalidate list of items to trigger re-query.
         }
     }
 
     public void update() {
-        persist(PersistAction.UPDATE, ResourceBundle.getBundle("/Bundle").getString("UserUpdated"));
+        persist(PersistAction.UPDATE, ResourceBundle.getBundle("/Bundle").getString("ServiceorderUpdated"));
     }
 
     public void destroy() {
-        persist(PersistAction.DELETE, ResourceBundle.getBundle("/Bundle").getString("UserDeleted"));
+        persist(PersistAction.DELETE, ResourceBundle.getBundle("/Bundle").getString("ServiceorderDeleted"));
         if (!JsfUtil.isValidationFailed()) {
             selected = null; // Remove selection
             items = null;    // Invalidate list of items to trigger re-query.
         }
     }
 
-    public List<User> getItems() {
+    public List<Serviceorder> getItems() {
         if (items == null) {
             items = getFacade().findAll();
         }
@@ -109,29 +109,29 @@ public class UserController implements Serializable {
         }
     }
 
-    public User getUser(java.lang.Integer id) {
+    public Serviceorder getServiceorder(java.lang.Integer id) {
         return getFacade().find(id);
     }
 
-    public List<User> getItemsAvailableSelectMany() {
+    public List<Serviceorder> getItemsAvailableSelectMany() {
         return getFacade().findAll();
     }
 
-    public List<User> getItemsAvailableSelectOne() {
+    public List<Serviceorder> getItemsAvailableSelectOne() {
         return getFacade().findAll();
     }
 
-    @FacesConverter(forClass = User.class)
-    public static class UserControllerConverter implements Converter {
+    @FacesConverter(forClass = Serviceorder.class)
+    public static class ServiceorderControllerConverter implements Converter {
 
         @Override
         public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
             if (value == null || value.length() == 0) {
                 return null;
             }
-            UserController controller = (UserController) facesContext.getApplication().getELResolver().
-                    getValue(facesContext.getELContext(), null, "userController");
-            return controller.getUser(getKey(value));
+            ServiceorderController controller = (ServiceorderController) facesContext.getApplication().getELResolver().
+                    getValue(facesContext.getELContext(), null, "serviceorderController");
+            return controller.getServiceorder(getKey(value));
         }
 
         java.lang.Integer getKey(String value) {
@@ -151,11 +151,11 @@ public class UserController implements Serializable {
             if (object == null) {
                 return null;
             }
-            if (object instanceof User) {
-                User o = (User) object;
+            if (object instanceof Serviceorder) {
+                Serviceorder o = (Serviceorder) object;
                 return getStringKey(o.getId());
             } else {
-                Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), User.class.getName()});
+                Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), Serviceorder.class.getName()});
                 return null;
             }
         }

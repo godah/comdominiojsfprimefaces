@@ -20,15 +20,13 @@
                 <h:form id="menuForm">
                     <p:menubar>
                         <p:menuitem value="#{bundle.Home}" outcome="/index" icon="ui-icon-home"/>
+                        <p:menuitem value="Ordem de Serviço" outcome="/pages/serviceorder/List.xhtml" icon="ui-icon-wrench"/>
                         <p:submenu label="#{bundle.Maintenance}">
-                            <p:menuitem value="Brand" outcome="/pages/brand/List.xhtml" />
-                            <p:menuitem value="Budget" outcome="/pages/budget/List.xhtml" />
-                            <p:menuitem value="Carrierservice" outcome="/pages/carrierservice/List.xhtml" />
-                            <p:menuitem value="Client" outcome="/pages/client/List.xhtml" />
-                            <p:menuitem value="Model" outcome="/pages/model/List.xhtml" />
-                            <p:menuitem value="Serviceorder" outcome="/pages/serviceorder/List.xhtml" />
-                            <p:menuitem value="User" outcome="/pages/user/List.xhtml" />
-                            <p:menuitem value="Usertype" outcome="/pages/usertype/List.xhtml" />
+                            <p:menuitem value="Clientes" outcome="/pages/client/List.xhtml" />
+                            <p:menuitem value="Marcas de Aparelhos" outcome="/pages/brand/List.xhtml" />
+                            <p:menuitem value="Modelos de Aparelhos" outcome="/pages/model/List.xhtml" />
+                            <p:menuitem value="Operadoras" outcome="/pages/carrierservice/List.xhtml" />
+                            <p:menuitem value="Usuários" outcome="/pages/user/List.xhtml" />
                         </p:submenu>
                     </p:menubar>
                 </h:form>
