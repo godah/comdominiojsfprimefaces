@@ -10,9 +10,9 @@
 
         <p:dialog id="ServiceorderCreateDlg" widgetVar="ServiceorderCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateServiceorderTitle}">
             <h:form id="ServiceorderCreateForm">
-                <div><h2>OS: #{serviceorderController.selected.code}</h2></div>
+                <h2>OS: #{serviceorderController.selected.code}</h2>
                 <h:panelGroup id="display">
-                    <p:panelGrid columns="6" rendered="#{serviceorderController.selected != null}">
+                    <p:panelGrid columns="4" rendered="#{serviceorderController.selected != null}">
                         <p:outputLabel value="Cliente:" for="clientId" />
                         <p:selectOneMenu id="clientId" value="#{serviceorderController.selected.clientId}" required="true" requiredMessage="Cliente Requerido." 
                                          filterMatchMode="contains" filter="true">
@@ -40,10 +40,12 @@
                                            itemValue="#{carrierserviceIdItem}"
                                            itemLabel="#{carrierserviceIdItem.descr}"/>
                         </p:selectOneMenu>
-                        <p:outputLabel value="#{bundle.CreateServiceorderLabel_imei}" for="imei" />
-                        <p:inputText id="imei" value="#{serviceorderController.selected.imei}" title="#{bundle.CreateServiceorderTitle_imei}" />
                         <p:outputLabel value="#{bundle.CreateServiceorderLabel_lockpasswd}" for="lockpasswd" />
                         <p:inputText id="lockpasswd" value="#{serviceorderController.selected.lockpasswd}" title="#{bundle.CreateServiceorderTitle_lockpasswd}" />
+                        <p:outputLabel value="#{bundle.CreateServiceorderLabel_imei}" for="imei" />
+                        <p:inputText id="imei" value="#{serviceorderController.selected.imei}" title="#{bundle.CreateServiceorderTitle_imei}" />
+                    </p:panelGrid>
+                    <p:panelGrid columns="6" rendered="#{serviceorderController.selected != null}">
                         <p:outputLabel value="#{bundle.CreateServiceorderLabel_batery}" for="batery" />
                         <p:selectBooleanCheckbox id="batery" value="#{serviceorderController.selected.batery}"/>
                         <p:outputLabel value="#{bundle.CreateServiceorderLabel_baterycode}" for="baterycode" />
@@ -76,24 +78,6 @@
                         <p:selectBooleanCheckbox id="scratchedcarcass" value="#{serviceorderController.selected.scratchedcarcass}"/>
                         <p:outputLabel value="#{bundle.CreateServiceorderLabel_brokencarcass}" for="brokencarcass" />
                         <p:selectBooleanCheckbox id="brokencarcass" value="#{serviceorderController.selected.brokencarcass}"/>
-                        <p:outputLabel value="#{bundle.CreateServiceorderLabel_resultOk}" for="resultOk" />
-                        <p:selectBooleanCheckbox id="resultOk" value="#{serviceorderController.selected.resultOk}" />
-                        <p:outputLabel value="#{bundle.CreateServiceorderLabel_resultNotfix}" for="resultNotfix" />
-                        <p:selectBooleanCheckbox id="resultNotfix" value="#{serviceorderController.selected.resultNotfix}" />
-                        <p:outputLabel value="#{bundle.CreateServiceorderLabel_delivered}" for="delivered" />
-                        <p:selectBooleanCheckbox id="delivered" value="#{serviceorderController.selected.delivered}"/>
-                        <p:outputLabel value="#{bundle.CreateServiceorderLabel_deliveryforecast}" for="deliveryforecast" />
-                        <p:calendar id="deliveryforecast" pattern="dd/MM/yyyy" value="#{serviceorderController.selected.deliveryforecast}" title="#{bundle.EditServiceorderTitle_deliveryforecast}"  showOn="button"/>
-                        <p:outputLabel value="#{bundle.CreateServiceorderLabel_undone}" for="undone" />
-                        <p:selectBooleanCheckbox id="undone" value="#{serviceorderController.selected.undone}"/>
-                        <p:outputLabel value="#{bundle.CreateServiceorderLabel_abandoned}" for="abandoned" />
-                        <p:selectBooleanCheckbox id="abandoned" value="#{serviceorderController.selected.abandoned}"/>
-                        <p:outputLabel value="#{bundle.CreateServiceorderLabel_technote}" for="technote" />
-                        <p:inputText id="technote" value="#{serviceorderController.selected.technote}" title="#{bundle.CreateServiceorderTitle_technote}" />
-                        <p:outputLabel value="#{bundle.CreateServiceorderLabel_signal}" for="signal" />
-                        <p:inputText id="signal" value="#{serviceorderController.selected.signal}" title="#{bundle.CreateServiceorderTitle_signal}" />
-                        <p:outputLabel value="#{bundle.CreateServiceorderLabel_rest}" for="rest" />
-                        <p:inputText id="rest" value="#{serviceorderController.selected.rest}" title="#{bundle.CreateServiceorderTitle_rest}" />
                     </p:panelGrid>
                     <p:outputLabel value="#{bundle.CreateServiceorderLabel_note}" for="note" />
                     <p:panelGrid columns="1" rendered="#{serviceorderController.selected != null}">
