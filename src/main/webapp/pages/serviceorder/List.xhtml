@@ -38,8 +38,32 @@
                                 <h:outputText value="#{bundle.ListServiceorderTitle_date}"/>
                             </f:facet>
                             <h:outputText value="#{item.date}">
-                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                                <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
                             </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Status"/>
+                            </f:facet>
+                            <h:outputText value="#{item.status}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Cliente"/>
+                            </f:facet>
+                            <h:outputText value="#{item.clientId.name}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Modelo"/>
+                            </f:facet>
+                            <h:outputText value="#{item.modelId.brandId.descr} / #{item.modelId.descr}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Atendente"/>
+                            </f:facet>
+                            <h:outputText value="#{item.userId.name}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
@@ -52,7 +76,7 @@
                                 <h:outputText value="#{bundle.ListServiceorderTitle_authorizationdate}"/>
                             </f:facet>
                             <h:outputText value="#{item.authorizationdate}">
-                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                                <f:convertDateTime pattern="dd/MM/yyyy" />
                             </h:outputText>
                         </p:column>
                         <p:column>
@@ -78,7 +102,7 @@
                                 <h:outputText value="#{bundle.ListServiceorderTitle_deliveryforecast}"/>
                             </f:facet>
                             <h:outputText value="#{item.deliveryforecast}">
-                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                                <f:convertDateTime pattern="dd/MM/yyyy" />
                             </h:outputText>
                         </p:column>
                         <p:column>
@@ -93,29 +117,11 @@
                             </f:facet>
                             <p:selectBooleanCheckbox value="#{item.abandoned}" disabled="true"/>
                         </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="Cliente"/>
-                            </f:facet>
-                            <h:outputText value="#{item.clientId.name}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="Modelo"/>
-                            </f:facet>
-                            <h:outputText value="#{item.modelId.brandId.descr} / #{item.modelId.descr}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="Atendente"/>
-                            </f:facet>
-                            <h:outputText value="#{item.userId.name}"/>
-                        </p:column>
                         <f:facet name="footer">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{serviceorderController.prepareCreate}" update=":ServiceorderCreateForm" oncomplete="PF('ServiceorderCreateDialog').show()"/>
                             <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":ServiceorderViewForm" oncomplete="PF('ServiceorderViewDialog').show()" disabled="#{empty serviceorderController.selected}"/>
                             <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":ServiceorderEditForm" oncomplete="PF('ServiceorderEditDialog').show()" disabled="#{empty serviceorderController.selected}"/>
-                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{serviceorderController.destroy}" update=":growl,datalist" disabled="#{empty serviceorderController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" update=":ConfirmDel" oncomplete="PF('ConfDel').show()" disabled="#{(empty serviceorderController.selected) or MBSession.usuarios.usertypeId.id != 3}"/>
                         </f:facet>
                     </p:dataTable>
                 </p:panel>
@@ -124,6 +130,7 @@
             <ui:include src="Create.xhtml"/>
             <ui:include src="Edit.xhtml"/>
             <ui:include src="View.xhtml"/>
+            <ui:include src="ConfirmDel.xhtml"/>
         </ui:define>
     </ui:composition>
 

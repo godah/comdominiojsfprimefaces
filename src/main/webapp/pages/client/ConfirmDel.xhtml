@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ConfDel" widgetVar="ConfDel" modal="true" resizable="false" appendTo="@(body)" header="Confirmar Exclusão">
+            <h:form id="ConfirmDel">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{clientController.selected != null}">
+                        <h:outputText value="#{bundle.ViewClientLabel_id}"/>
+                        <h:outputText value="#{clientController.selected.id}" title="#{bundle.ViewClientTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewClientLabel_name}"/>
+                        <h:outputText value="#{clientController.selected.name}" title="#{bundle.ViewClientTitle_name}"/>
+                        <h:outputText value="#{bundle.ViewClientLabel_address}"/>
+                        <h:outputText value="#{clientController.selected.address}" title="#{bundle.ViewClientTitle_address}"/>
+                        <h:outputText value="#{bundle.ViewClientLabel_neighborhood}"/>
+                        <h:outputText value="#{clientController.selected.neighborhood}" title="#{bundle.ViewClientTitle_neighborhood}"/>
+                        <h:outputText value="#{bundle.ViewClientLabel_city}"/>
+                        <h:outputText value="#{clientController.selected.city}" title="#{bundle.ViewClientTitle_city}"/>
+                        <h:outputText value="#{bundle.ViewClientLabel_zip}"/>
+                        <h:outputText value="#{clientController.selected.zip}" title="#{bundle.ViewClientTitle_zip}"/>
+                        <h:outputText value="#{bundle.ViewClientLabel_phone1}"/>
+                        <h:outputText value="#{clientController.selected.phone1}" title="#{bundle.ViewClientTitle_phone1}"/>
+                        <h:outputText value="#{bundle.ViewClientLabel_phone2}"/>
+                        <h:outputText value="#{clientController.selected.phone2}" title="#{bundle.ViewClientTitle_phone2}"/>
+                        <h:outputText value="#{bundle.ViewClientLabel_email}"/>
+                        <h:outputText value="#{clientController.selected.email}" title="#{bundle.ViewClientTitle_email}"/>
+                    </p:panelGrid>
+                    <p:commandButton id="deleteButtons" icon="ui-icon-trash"  value="Confirmar" actionListener="#{clientController.destroy}" update=":growl" disabled="#{empty clientController.selected}" onclick="ConfDel.hide()"/>
+                    <p:commandButton value="Cancelar" onclick="ConfDel.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

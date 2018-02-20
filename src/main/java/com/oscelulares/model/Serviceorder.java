@@ -625,8 +625,26 @@ public class Serviceorder implements Serializable {
     /**
      * @return the status
      */
-    public char getStatus() {
-        return status;
+    public String getStatus() {
+        String out;
+        switch (this.status){
+            case '1':
+                out = "Em Análise Técnica.";
+                break;
+            case '2':
+                out = "Aguardando Autorização do Cliente.";
+                break;
+            case '3':
+                out = "Autorizado, em manutenção.";
+                break;
+            case '4':
+                out = "Finalizado.";
+                break;
+            default:
+                out = "Indefinido.";
+                break;
+        }       
+        return out;
     }
 
     /**

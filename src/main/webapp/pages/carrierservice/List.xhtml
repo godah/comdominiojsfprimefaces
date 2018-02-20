@@ -43,7 +43,7 @@
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{carrierserviceController.prepareCreate}" update=":CarrierserviceCreateForm" oncomplete="PF('CarrierserviceCreateDialog').show()"/>
                             <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":CarrierserviceViewForm" oncomplete="PF('CarrierserviceViewDialog').show()" disabled="#{empty carrierserviceController.selected}"/>
                             <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":CarrierserviceEditForm" oncomplete="PF('CarrierserviceEditDialog').show()" disabled="#{empty carrierserviceController.selected}"/>
-                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{carrierserviceController.destroy}" update=":growl,datalist" disabled="#{empty carrierserviceController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" update=":ConfirmDel" oncomplete="PF('ConfDel').show()" disabled="#{empty carrierserviceController.selected}"/>
                         </f:facet>
                     </p:dataTable>
                 </p:panel>
@@ -52,6 +52,7 @@
             <ui:include src="Create.xhtml"/>
             <ui:include src="Edit.xhtml"/>
             <ui:include src="View.xhtml"/>
+            <ui:include src="ConfirmDel.xhtml"/>
         </ui:define>
     </ui:composition>
 
