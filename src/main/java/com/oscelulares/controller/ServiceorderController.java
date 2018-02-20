@@ -148,23 +148,24 @@ public class ServiceorderController implements Serializable {
     
     public int getLastCode() {
         em = emf.createEntityManager();
-        String jpql = "SELECT max(u.code) "
-                + "FROM Serviceorder u " ;
+        String jpql = "SELECT max(s.code) "
+                + "FROM Serviceorder s ";
         
-        Serviceorder OSTemp;
+        Integer newCode;
         try {
-            OSTemp = em.createQuery(jpql, Serviceorder.class)
+            newCode = em.createQuery(jpql, Integer.class)
                 .getSingleResult();
-                return OSTemp.getCode()+1;
+            return newCode + 1;
         } catch (Exception e) {
+            e.printStackTrace();
             return 0;
         }
     }
     
     public boolean checkExistsTrackCode(String trackcode,EntityManager em) {
-        String jpql = "SELECT u "
-                + "FROM Serviceorder u "
-                + "WHERE u.trackcode = :trackcode ";
+        String jpql = "SELECT s "
+                + "FROM Serviceorder s "
+                + "WHERE s.trackcode = :trackcode ";
         
         Serviceorder OSTemp;
         try {
