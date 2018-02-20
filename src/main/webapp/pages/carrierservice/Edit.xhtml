@@ -12,8 +12,6 @@
             <h:form id="CarrierserviceEditForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{carrierserviceController.selected != null}">
-                        <p:outputLabel value="#{bundle.EditCarrierserviceLabel_id}" for="id" />
-                        <p:inputText id="id" value="#{carrierserviceController.selected.id}" title="#{bundle.EditCarrierserviceTitle_id}" required="true" requiredMessage="#{bundle.EditCarrierserviceRequiredMessage_id}"/>
                         <p:outputLabel value="#{bundle.EditCarrierserviceLabel_descr}" for="descr" />
                         <p:inputText id="descr" value="#{carrierserviceController.selected.descr}" title="#{bundle.EditCarrierserviceTitle_descr}" required="true" requiredMessage="#{bundle.EditCarrierserviceRequiredMessage_descr}"/>
                     </p:panelGrid>

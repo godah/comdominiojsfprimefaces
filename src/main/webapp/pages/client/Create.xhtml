@@ -12,8 +12,6 @@
             <h:form id="ClientCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{clientController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateClientLabel_id}" for="id" />
-                        <p:inputText id="id" value="#{clientController.selected.id}" title="#{bundle.CreateClientTitle_id}" required="true" requiredMessage="#{bundle.CreateClientRequiredMessage_id}"/>
                         <p:outputLabel value="#{bundle.CreateClientLabel_name}" for="name" />
                         <p:inputText id="name" value="#{clientController.selected.name}" title="#{bundle.CreateClientTitle_name}" required="true" requiredMessage="#{bundle.CreateClientRequiredMessage_name}"/>
                         <p:outputLabel value="#{bundle.CreateClientLabel_address}" for="address" />

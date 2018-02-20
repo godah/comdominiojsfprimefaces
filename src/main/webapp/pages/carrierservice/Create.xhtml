@@ -12,8 +12,6 @@
             <h:form id="CarrierserviceCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{carrierserviceController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateCarrierserviceLabel_id}" for="id" />
-                        <p:inputText id="id" value="#{carrierserviceController.selected.id}" title="#{bundle.CreateCarrierserviceTitle_id}" required="true" requiredMessage="#{bundle.CreateCarrierserviceRequiredMessage_id}"/>
                         <p:outputLabel value="#{bundle.CreateCarrierserviceLabel_descr}" for="descr" />
                         <p:inputText id="descr" value="#{carrierserviceController.selected.descr}" title="#{bundle.CreateCarrierserviceTitle_descr}" required="true" requiredMessage="#{bundle.CreateCarrierserviceRequiredMessage_descr}"/>
                     </p:panelGrid>

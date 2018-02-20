@@ -16,8 +16,8 @@
                         <h:outputText value="#{modelController.selected.id}" title="#{bundle.ViewModelTitle_id}"/>
                         <h:outputText value="#{bundle.ViewModelLabel_descr}"/>
                         <h:outputText value="#{modelController.selected.descr}" title="#{bundle.ViewModelTitle_descr}"/>
-                        <h:outputText value="#{bundle.ViewModelLabel_brandId}"/>
-                        <h:outputText value="#{modelController.selected.brandId}" title="#{bundle.ViewModelTitle_brandId}"/>
+                        <h:outputText value="Marca"/>
+                        <h:outputText value="#{modelController.selected.brandId.descr}" title="Marca"/>
                     </p:panelGrid>
                     <p:commandButton value="#{bundle.Close}" onclick="ModelViewDialog.hide()"/>
                 </h:panelGroup>

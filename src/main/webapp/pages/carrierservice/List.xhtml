@@ -20,20 +20,20 @@
                                  selectionMode="single" selection="#{carrierserviceController.selected}"
                                  paginator="true"
                                  rowKey="#{item.id}"
-                                 rows="10"
-                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 rows="20"
+                                 rowsPerPageTemplate="20,50,100"
                                  >
 
                         <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
                         <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
 
-                        <p:column>
+                        <p:column filterBy="#{item.id}" filterMatchMode="contains" filterMaxLength="6" filterStyle="width: 50px;" style="width: 60px;">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListCarrierserviceTitle_id}"/>
                             </f:facet>
                             <h:outputText value="#{item.id}"/>
                         </p:column>
-                        <p:column>
+                        <p:column filterBy="#{item.name}" filterMatchMode="contains" filterMaxLength="30" filterStyle="width: 200px;">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListCarrierserviceTitle_descr}"/>
                             </f:facet>

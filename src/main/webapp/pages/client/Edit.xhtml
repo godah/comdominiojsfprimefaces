@@ -12,8 +12,6 @@
             <h:form id="ClientEditForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{clientController.selected != null}">
-                        <p:outputLabel value="#{bundle.EditClientLabel_id}" for="id" />
-                        <p:inputText id="id" value="#{clientController.selected.id}" title="#{bundle.EditClientTitle_id}" required="true" requiredMessage="#{bundle.EditClientRequiredMessage_id}"/>
                         <p:outputLabel value="#{bundle.EditClientLabel_name}" for="name" />
                         <p:inputText id="name" value="#{clientController.selected.name}" title="#{bundle.EditClientTitle_name}" required="true" requiredMessage="#{bundle.EditClientRequiredMessage_name}"/>
                         <p:outputLabel value="#{bundle.EditClientLabel_address}" for="address" />

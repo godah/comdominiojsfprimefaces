@@ -12,8 +12,6 @@
             <h:form id="BrandCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{brandController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateBrandLabel_id}" for="id" />
-                        <p:inputText id="id" value="#{brandController.selected.id}" title="#{bundle.CreateBrandTitle_id}" required="true" requiredMessage="#{bundle.CreateBrandRequiredMessage_id}"/>
                         <p:outputLabel value="#{bundle.CreateBrandLabel_descr}" for="descr" />
                         <p:inputText id="descr" value="#{brandController.selected.descr}" title="#{bundle.CreateBrandTitle_descr}" required="true" requiredMessage="#{bundle.CreateBrandRequiredMessage_descr}"/>
                     </p:panelGrid>

@@ -1,15 +1,20 @@
 package com.oscelulares.controller;
 
+import com.oscelulares.auth.SessionBean;
 import com.oscelulares.model.Serviceorder;
 import com.oscelulares.jsf.util.JsfUtil;
 import com.oscelulares.jsf.util.JsfUtil.PersistAction;
 import com.oscelulares.facecade.ServiceorderFacade;
+import com.oscelulares.util.Programs;
+import com.oscelulares.util.Senhas;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.annotation.Resource;
 import javax.ejb.EJB;
 import javax.ejb.EJBException;
 import javax.inject.Named;
@@ -18,10 +23,21 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
+//import javax.naming.InitialContext;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.PersistenceUnit;
+import javax.transaction.UserTransaction;
 
 @Named("serviceorderController")
 @SessionScoped
 public class ServiceorderController implements Serializable {
+    private EntityManager em = null;
+    //private InitialContext ic = null;
+    @PersistenceUnit(unitName="com_oscelulares_war_1.0-SNAPSHOTPU") //inject from your application server
+    EntityManagerFactory emf;
+    @Resource //inject from your application server
+    UserTransaction utx; 
 
     @EJB
     private com.oscelulares.facecade.ServiceorderFacade ejbFacade;
@@ -52,10 +68,20 @@ public class ServiceorderController implements Serializable {
     public Serviceorder prepareCreate() {
         selected = new Serviceorder();
         initializeEmbeddableKey();
+        
+        //atributos predefinidos
+        selected.setCode(getLastCode());
+        selected.setStatus('1'); //Analise Técnica
+        selected.setTrackcode(trackcodegen());//gera trackcode único
+        SessionBean sessionBean = (SessionBean) Programs.getManagedBean("MBSession");
+        selected.setUserId(sessionBean.getUsuarios());//seleciona usuário atual
+        selected.setDate(new Date());//pega data atual
+        
         return selected;
     }
 
     public void create() {
+        
         persist(PersistAction.CREATE, ResourceBundle.getBundle("/Bundle").getString("ServiceorderCreated"));
         if (!JsfUtil.isValidationFailed()) {
             items = null;    // Invalidate list of items to trigger re-query.
@@ -106,6 +132,50 @@ public class ServiceorderController implements Serializable {
                 Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, null, ex);
                 JsfUtil.addErrorMessage(ex, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
             }
+        }
+    }
+    
+    public String trackcodegen(){
+        em = emf.createEntityManager();
+        String trackcode;
+        while(true){
+            trackcode = Senhas.gerarNovaSenha(8);
+            if(!checkExistsTrackCode(trackcode, em))
+                break;
+        }
+        return trackcode;
+    }
+    
+    public int getLastCode() {
+        em = emf.createEntityManager();
+        String jpql = "SELECT max(u.code) "
+                + "FROM Serviceorder u " ;
+        
+        Serviceorder OSTemp;
+        try {
+            OSTemp = em.createQuery(jpql, Serviceorder.class)
+                .getSingleResult();
+                return OSTemp.getCode()+1;
+        } catch (Exception e) {
+            return 0;
+        }
+    }
+    
+    public boolean checkExistsTrackCode(String trackcode,EntityManager em) {
+        String jpql = "SELECT u "
+                + "FROM Serviceorder u "
+                + "WHERE u.trackcode = :trackcode ";
+        
+        Serviceorder OSTemp;
+        try {
+            OSTemp = em.createQuery(jpql, Serviceorder.class)
+                .setParameter("trackcode", trackcode)
+                .getSingleResult();
+            System.out.println("achou trackcode " + trackcode);
+            return true;
+        } catch (Exception e) {
+             System.out.println("nao achou trackcode " + trackcode);
+             return false;
         }
     }
 

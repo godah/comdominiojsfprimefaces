@@ -26,7 +26,7 @@
                             <p:menuitem value="Marcas de Aparelhos" outcome="/pages/brand/List.xhtml" />
                             <p:menuitem value="Modelos de Aparelhos" outcome="/pages/model/List.xhtml" />
                             <p:menuitem value="Operadoras" outcome="/pages/carrierservice/List.xhtml" />
-                            <p:menuitem value="Usuários" outcome="/pages/user/List.xhtml" />
+                            <p:menuitem value="Usuários" outcome="/pages/user/List.xhtml" disabled="#{MBSession.usuarios.usertypeId.id != 3}" />
                         </p:submenu>
                     </p:menubar>
                 </h:form>

@@ -18,12 +18,10 @@
                         <h:outputText value="#{userController.selected.name}" title="#{bundle.ViewUserTitle_name}"/>
                         <h:outputText value="#{bundle.ViewUserLabel_login}"/>
                         <h:outputText value="#{userController.selected.login}" title="#{bundle.ViewUserTitle_login}"/>
-                        <h:outputText value="#{bundle.ViewUserLabel_passwd}"/>
-                        <h:outputText value="#{userController.selected.passwd}" title="#{bundle.ViewUserTitle_passwd}"/>
                         <h:outputText value="#{bundle.ViewUserLabel_phone}"/>
                         <h:outputText value="#{userController.selected.phone}" title="#{bundle.ViewUserTitle_phone}"/>
-                        <h:outputText value="#{bundle.ViewUserLabel_usertypeId}"/>
-                        <h:outputText value="#{userController.selected.usertypeId}" title="#{bundle.ViewUserTitle_usertypeId}"/>
+                        <h:outputText value="Tipo de Usuário"/>
+                        <h:outputText value="#{userController.selected.usertypeId.descr}" title="Tipo de Usuário"/>
                     </p:panelGrid>
                     <p:commandButton value="#{bundle.Close}" onclick="UserViewDialog.hide()"/>
                 </h:panelGroup>

@@ -48,8 +48,8 @@ public class AutenticadorBean implements Serializable{
                 usuario = new User();
                 //seta campos digitados
                 usuario.setLogin(getNome());
-                //usuario.setPasswd(Senhas.encript(getSenha()));
-                usuario.setPasswd(getSenha()); // senha sem encriptografar
+                usuario.setPasswd(Senhas.encript(getSenha()));
+                //usuario.setPasswd(getSenha()); // senha sem encriptografar
                 
             } catch (Exception e) {
                 e.printStackTrace();

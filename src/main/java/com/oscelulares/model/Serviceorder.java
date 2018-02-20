@@ -72,6 +72,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Serviceorder.findByAbandoned", query = "SELECT s FROM Serviceorder s WHERE s.abandoned = :abandoned"),
     @NamedQuery(name = "Serviceorder.findByTechnote", query = "SELECT s FROM Serviceorder s WHERE s.technote = :technote"),
     @NamedQuery(name = "Serviceorder.findBySignal", query = "SELECT s FROM Serviceorder s WHERE s.paysignal = :paysignal"),
+    @NamedQuery(name = "Serviceorder.findByTrackCode", query = "SELECT s FROM Serviceorder s WHERE s.trackcode = :trackcode"),
+    @NamedQuery(name = "Serviceorder.findByStatus", query = "SELECT s FROM Serviceorder s WHERE s.status = :status"),
     @NamedQuery(name = "Serviceorder.findByRest", query = "SELECT s FROM Serviceorder s WHERE s.rest = :rest")})
 public class Serviceorder implements Serializable {
 
@@ -174,6 +176,18 @@ public class Serviceorder implements Serializable {
     @Size(min = 1, max = 300)
     @Column(name = "issues")
     private String issues;
+    @Size(min = 1, max = 8)
+    @Column(name = "trackcode")
+    private String trackcode;
+    @Column(name = "status")
+    private char status;
+    //STATUS
+    /*
+        1 = Analise Técnica
+        2 = Aguardando Autorização
+        3 = Autorizado
+        4 = Finalizado        
+    */
     @Column(name = "result_ok")
     private Boolean resultOk;
     @Column(name = "result_notfix")
@@ -592,6 +606,34 @@ public class Serviceorder implements Serializable {
     @Override
     public String toString() {
         return "com.oscelulares.model.Serviceorder[ id=" + id + " ]";
+    }
+
+    /**
+     * @return the trackcode
+     */
+    public String getTrackcode() {
+        return trackcode;
+    }
+
+    /**
+     * @param trackcode the trackcode to set
+     */
+    public void setTrackcode(String trackcode) {
+        this.trackcode = trackcode;
+    }
+
+    /**
+     * @return the status
+     */
+    public char getStatus() {
+        return status;
+    }
+
+    /**
+     * @param status the status to set
+     */
+    public void setStatus(char status) {
+        this.status = status;
     }
     
 }

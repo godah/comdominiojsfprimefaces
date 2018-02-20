@@ -12,15 +12,15 @@
             <h:form id="ModelCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{modelController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateModelLabel_id}" for="id" />
-                        <p:inputText id="id" value="#{modelController.selected.id}" title="#{bundle.CreateModelTitle_id}" required="true" requiredMessage="#{bundle.CreateModelRequiredMessage_id}"/>
                         <p:outputLabel value="#{bundle.CreateModelLabel_descr}" for="descr" />
                         <p:inputText id="descr" value="#{modelController.selected.descr}" title="#{bundle.CreateModelTitle_descr}" required="true" requiredMessage="#{bundle.CreateModelRequiredMessage_descr}"/>
                         <p:outputLabel value="#{bundle.CreateModelLabel_brandId}" for="brandId" />
-                        <p:selectOneMenu id="brandId" value="#{modelController.selected.brandId}" required="true" requiredMessage="#{bundle.EditModelRequiredMessage_brandId}">
+                        <p:selectOneMenu id="brandId" value="#{modelController.selected.brandId}" required="true" requiredMessage="Selecione uma Marca." filterMatchMode="contains" filter="true">
                             <f:selectItems value="#{brandController.itemsAvailableSelectOne}"
                                            var="brandIdItem"
-                                           itemValue="#{brandIdItem}"/>
+                                           itemValue="#{brandIdItem}"
+                                           itemLabel="#{brandIdItem.descr}"
+                                           />
                         </p:selectOneMenu>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{modelController.create}" value="#{bundle.Save}" update="display,:ModelListForm:datalist,:growl" oncomplete="handleSubmit(args,'ModelCreateDialog');"/>

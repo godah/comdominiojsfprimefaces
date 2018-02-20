@@ -19,7 +19,10 @@ public class Senhas {
         //System.out.println(gerarNovaSenha());
         //System.out.println(encript(gerarNovaSenha()));
     }
-    public static String gerarNovaSenha() {
+     /*
+     Gera senha aleatória, o parametro int define a largura da String gerada.
+     */
+    public static String gerarNovaSenha(int len) {
         //Gera Senha aleatoria de 10 caracteres
         String[] carct = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9",
                       "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l",
@@ -30,7 +33,7 @@ public class Senhas {
 
         String senha = "";
 
-        for (int x = 0; x < 10; x++) {
+        for (int x = 0; x < len; x++) {
             int j = (int) (Math.random() * carct.length);
             senha += carct[j];
 
