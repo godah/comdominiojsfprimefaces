@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PessoacondominioViewDlg" widgetVar="PessoacondominioViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewPessoacondominioTitle}">
+            <h:form id="PessoacondominioViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{pessoacondominioController.selected != null}">
+                        <h:outputText value="#{bundle.ViewPessoacondominioLabel_value}"/>
+                        <h:outputText value="#{pessoacondominioController.selected.value}" title="#{bundle.ViewPessoacondominioTitle_value}"/>
+                        <h:outputText value="#{bundle.ViewPessoacondominioLabel_datafim}"/>
+                        <h:outputText value="#{pessoacondominioController.selected.datafim}" title="#{bundle.ViewPessoacondominioTitle_datafim}"/>
+                        <h:outputText value="#{bundle.ViewPessoacondominioLabel_datainicio}"/>
+                        <h:outputText value="#{pessoacondominioController.selected.datainicio}" title="#{bundle.ViewPessoacondominioTitle_datainicio}"/>
+                        <h:outputText value="#{bundle.ViewPessoacondominioLabel_condominioId}"/>
+                        <h:outputText value="#{pessoacondominioController.selected.condominioId}" title="#{bundle.ViewPessoacondominioTitle_condominioId}"/>
+                        <h:outputText value="#{bundle.ViewPessoacondominioLabel_pessoaId}"/>
+                        <h:outputText value="#{pessoacondominioController.selected.pessoaId}" title="#{bundle.ViewPessoacondominioTitle_pessoaId}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="PessoacondominioViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

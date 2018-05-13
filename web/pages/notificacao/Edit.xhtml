@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="NotificacaoEditDlg" widgetVar="NotificacaoEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditNotificacaoTitle}">
+            <h:form id="NotificacaoEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{notificacaoController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditNotificacaoLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{notificacaoController.selected.id}" title="#{bundle.EditNotificacaoTitle_id}" required="true" requiredMessage="#{bundle.EditNotificacaoRequiredMessage_id}"/>
+                        <p:outputLabel value="#{bundle.EditNotificacaoLabel_data}" for="data" />
+                        <p:inputText id="data" value="#{notificacaoController.selected.data}" title="#{bundle.EditNotificacaoTitle_data}" />
+                        <p:outputLabel value="#{bundle.EditNotificacaoLabel_descricao}" for="descricao" />
+                        <p:inputText id="descricao" value="#{notificacaoController.selected.descricao}" title="#{bundle.EditNotificacaoTitle_descricao}" />
+                        <p:outputLabel value="#{bundle.EditNotificacaoLabel_titulo}" for="titulo" />
+                        <p:inputText id="titulo" value="#{notificacaoController.selected.titulo}" title="#{bundle.EditNotificacaoTitle_titulo}" />
+                        <p:outputLabel value="#{bundle.EditNotificacaoLabel_condominioId}" for="condominioId" />
+                        <p:selectOneMenu id="condominioId" value="#{notificacaoController.selected.condominioId}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{condominioController.itemsAvailableSelectOne}"
+                                           var="condominioIdItem"
+                                           itemValue="#{condominioIdItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditNotificacaoLabel_pessoaId}" for="pessoaId" />
+                        <p:selectOneMenu id="pessoaId" value="#{notificacaoController.selected.pessoaId}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{pessoaController.itemsAvailableSelectOne}"
+                                           var="pessoaIdItem"
+                                           itemValue="#{pessoaIdItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{notificacaoController.update}" value="#{bundle.Save}" update="display,:NotificacaoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'NotificacaoEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="NotificacaoEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

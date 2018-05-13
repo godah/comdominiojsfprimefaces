@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PessoacondominioCreateDlg" widgetVar="PessoacondominioCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreatePessoacondominioTitle}">
+            <h:form id="PessoacondominioCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{pessoacondominioController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreatePessoacondominioLabel_value}" for="value" />
+                        <p:inputText id="value" value="#{pessoacondominioController.selected.value}" title="#{bundle.CreatePessoacondominioTitle_value}" required="true" requiredMessage="#{bundle.CreatePessoacondominioRequiredMessage_value}"/>
+                        <p:outputLabel value="#{bundle.CreatePessoacondominioLabel_datafim}" for="datafim" />
+                        <p:inputText id="datafim" value="#{pessoacondominioController.selected.datafim}" title="#{bundle.CreatePessoacondominioTitle_datafim}" />
+                        <p:outputLabel value="#{bundle.CreatePessoacondominioLabel_datainicio}" for="datainicio" />
+                        <p:inputText id="datainicio" value="#{pessoacondominioController.selected.datainicio}" title="#{bundle.CreatePessoacondominioTitle_datainicio}" />
+                        <p:outputLabel value="#{bundle.CreatePessoacondominioLabel_condominioId}" for="condominioId" />
+                        <p:selectOneMenu id="condominioId" value="#{pessoacondominioController.selected.condominioId}" >
+                            <f:selectItems value="#{condominioController.itemsAvailableSelectOne}"
+                                           var="condominioIdItem"
+                                           itemValue="#{condominioIdItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreatePessoacondominioLabel_pessoaId}" for="pessoaId" />
+                        <p:selectOneMenu id="pessoaId" value="#{pessoacondominioController.selected.pessoaId}" >
+                            <f:selectItems value="#{pessoaController.itemsAvailableSelectOne}"
+                                           var="pessoaIdItem"
+                                           itemValue="#{pessoaIdItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{pessoacondominioController.create}" value="#{bundle.Save}" update="display,:PessoacondominioListForm:datalist,:growl" oncomplete="handleSubmit(args,'PessoacondominioCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="PessoacondominioCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

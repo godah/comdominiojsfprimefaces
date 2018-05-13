@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="LancamentofinanceiroEditDlg" widgetVar="LancamentofinanceiroEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditLancamentofinanceiroTitle}">
+            <h:form id="LancamentofinanceiroEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{lancamentofinanceiroController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditLancamentofinanceiroLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{lancamentofinanceiroController.selected.id}" title="#{bundle.EditLancamentofinanceiroTitle_id}" required="true" requiredMessage="#{bundle.EditLancamentofinanceiroRequiredMessage_id}"/>
+                        <p:outputLabel value="#{bundle.EditLancamentofinanceiroLabel_datalancamento}" for="datalancamento" />
+                        <p:inputText id="datalancamento" value="#{lancamentofinanceiroController.selected.datalancamento}" title="#{bundle.EditLancamentofinanceiroTitle_datalancamento}" />
+                        <p:outputLabel value="#{bundle.EditLancamentofinanceiroLabel_descricao}" for="descricao" />
+                        <p:inputText id="descricao" value="#{lancamentofinanceiroController.selected.descricao}" title="#{bundle.EditLancamentofinanceiroTitle_descricao}" />
+                        <p:outputLabel value="#{bundle.EditLancamentofinanceiroLabel_financeiroId}" for="financeiroId" />
+                        <p:selectOneMenu id="financeiroId" value="#{lancamentofinanceiroController.selected.financeiroId}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{financeiroController.itemsAvailableSelectOne}"
+                                           var="financeiroIdItem"
+                                           itemValue="#{financeiroIdItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditLancamentofinanceiroLabel_lancamentoId}" for="lancamentoId" />
+                        <p:selectOneMenu id="lancamentoId" value="#{lancamentofinanceiroController.selected.lancamentoId}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{lancamentoController.itemsAvailableSelectOne}"
+                                           var="lancamentoIdItem"
+                                           itemValue="#{lancamentoIdItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditLancamentofinanceiroLabel_pessoaId}" for="pessoaId" />
+                        <p:selectOneMenu id="pessoaId" value="#{lancamentofinanceiroController.selected.pessoaId}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{pessoaController.itemsAvailableSelectOne}"
+                                           var="pessoaIdItem"
+                                           itemValue="#{pessoaIdItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditLancamentofinanceiroLabel_servicoId}" for="servicoId" />
+                        <p:selectOneMenu id="servicoId" value="#{lancamentofinanceiroController.selected.servicoId}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{servicoController.itemsAvailableSelectOne}"
+                                           var="servicoIdItem"
+                                           itemValue="#{servicoIdItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{lancamentofinanceiroController.update}" value="#{bundle.Save}" update="display,:LancamentofinanceiroListForm:datalist,:growl" oncomplete="handleSubmit(args, 'LancamentofinanceiroEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="LancamentofinanceiroEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

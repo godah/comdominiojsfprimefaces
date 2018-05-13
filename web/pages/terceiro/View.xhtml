@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TerceiroViewDlg" widgetVar="TerceiroViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewTerceiroTitle}">
+            <h:form id="TerceiroViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{terceiroController.selected != null}">
+                        <h:outputText value="#{bundle.ViewTerceiroLabel_id}"/>
+                        <h:outputText value="#{terceiroController.selected.id}" title="#{bundle.ViewTerceiroTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewTerceiroLabel_aprovacao}"/>
+                        <p:selectBooleanCheckbox value="#{terceiroController.selected.aprovacao}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewTerceiroLabel_descricao}"/>
+                        <h:outputText value="#{terceiroController.selected.descricao}" title="#{bundle.ViewTerceiroTitle_descricao}"/>
+                        <h:outputText value="#{bundle.ViewTerceiroLabel_email}"/>
+                        <h:outputText value="#{terceiroController.selected.email}" title="#{bundle.ViewTerceiroTitle_email}"/>
+                        <h:outputText value="#{bundle.ViewTerceiroLabel_nome}"/>
+                        <h:outputText value="#{terceiroController.selected.nome}" title="#{bundle.ViewTerceiroTitle_nome}"/>
+                        <h:outputText value="#{bundle.ViewTerceiroLabel_telefone}"/>
+                        <h:outputText value="#{terceiroController.selected.telefone}" title="#{bundle.ViewTerceiroTitle_telefone}"/>
+                        <h:outputText value="#{bundle.ViewTerceiroLabel_pessoaId}"/>
+                        <h:outputText value="#{terceiroController.selected.pessoaId}" title="#{bundle.ViewTerceiroTitle_pessoaId}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="TerceiroViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

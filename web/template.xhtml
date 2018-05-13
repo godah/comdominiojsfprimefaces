@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title><ui:insert name="title">Default Title</ui:insert></title>
+        <h:outputStylesheet library="css" name="jsfcrud.css"/>
+        <h:outputScript library="js" name="jsfcrud.js"/>
+    </h:head>
+
+    <h:body>
+
+        <p:growl id="growl" life="3000" />
+
+        <p:layout fullPage="true">
+            <p:layoutUnit position="north" size="65" header="#{bundle.AppName}">
+                <h:form id="menuForm">
+                    <p:menubar>
+                        <p:menuitem value="#{bundle.Home}" outcome="/index" icon="ui-icon-home"/>
+                        <p:submenu label="#{bundle.Maintenance}">
+                            <p:menuitem value="Agendamentolazer" outcome="/pages/agendamentolazer/List.xhtml" />
+                            <p:menuitem value="Arealazer" outcome="/pages/arealazer/List.xhtml" />
+                            <p:menuitem value="Condominio" outcome="/pages/condominio/List.xhtml" />
+                            <p:menuitem value="Financeiro" outcome="/pages/financeiro/List.xhtml" />
+                            <p:menuitem value="Grupo" outcome="/pages/grupo/List.xhtml" />
+                            <p:menuitem value="Itemlancamento" outcome="/pages/itemlancamento/List.xhtml" />
+                            <p:menuitem value="Lancamento" outcome="/pages/lancamento/List.xhtml" />
+                            <p:menuitem value="Lancamentofinanceiro" outcome="/pages/lancamentofinanceiro/List.xhtml" />
+                            <p:menuitem value="Mensagem" outcome="/pages/mensagem/List.xhtml" />
+                            <p:menuitem value="Notificacao" outcome="/pages/notificacao/List.xhtml" />
+                            <p:menuitem value="Pessoa" outcome="/pages/pessoa/List.xhtml" />
+                            <p:menuitem value="Pessoacondominio" outcome="/pages/pessoacondominio/List.xhtml" />
+                            <p:menuitem value="Servico" outcome="/pages/servico/List.xhtml" />
+                            <p:menuitem value="Terceiro" outcome="/pages/terceiro/List.xhtml" />
+                            <p:menuitem value="Tipoarealazer" outcome="/pages/tipoarealazer/List.xhtml" />
+                            <p:menuitem value="Tipolancamento" outcome="/pages/tipolancamento/List.xhtml" />
+                            <p:menuitem value="Tipopessoa" outcome="/pages/tipopessoa/List.xhtml" />
+                            <p:menuitem value="Tiposervico" outcome="/pages/tiposervico/List.xhtml" />
+                            <p:menuitem value="Tipounidade" outcome="/pages/tipounidade/List.xhtml" />
+                            <p:menuitem value="Unidade" outcome="/pages/unidade/List.xhtml" />
+                            <p:menuitem value="Vagasdisponivel" outcome="/pages/vagasdisponivel/List.xhtml" />
+                        </p:submenu>
+                    </p:menubar>
+                </h:form>
+            </p:layoutUnit>
+
+            <p:layoutUnit position="south" size="60">
+                <ui:insert name="footer"/>
+            </p:layoutUnit>
+
+            <p:layoutUnit position="center">
+                <ui:insert name="body"/>
+            </p:layoutUnit>
+
+        </p:layout>
+
+    </h:body>
+
+</html>

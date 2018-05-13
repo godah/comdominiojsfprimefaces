@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CondominioEditDlg" widgetVar="CondominioEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditCondominioTitle}">
+            <h:form id="CondominioEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{condominioController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditCondominioLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{condominioController.selected.id}" title="#{bundle.EditCondominioTitle_id}" required="true" requiredMessage="#{bundle.EditCondominioRequiredMessage_id}"/>
+                        <p:outputLabel value="#{bundle.EditCondominioLabel_bairro}" for="bairro" />
+                        <p:inputText id="bairro" value="#{condominioController.selected.bairro}" title="#{bundle.EditCondominioTitle_bairro}" />
+                        <p:outputLabel value="#{bundle.EditCondominioLabel_cep}" for="cep" />
+                        <p:inputText id="cep" value="#{condominioController.selected.cep}" title="#{bundle.EditCondominioTitle_cep}" />
+                        <p:outputLabel value="#{bundle.EditCondominioLabel_cidade}" for="cidade" />
+                        <p:inputText id="cidade" value="#{condominioController.selected.cidade}" title="#{bundle.EditCondominioTitle_cidade}" />
+                        <p:outputLabel value="#{bundle.EditCondominioLabel_complemento}" for="complemento" />
+                        <p:inputText id="complemento" value="#{condominioController.selected.complemento}" title="#{bundle.EditCondominioTitle_complemento}" />
+                        <p:outputLabel value="#{bundle.EditCondominioLabel_logradouro}" for="logradouro" />
+                        <p:inputText id="logradouro" value="#{condominioController.selected.logradouro}" title="#{bundle.EditCondominioTitle_logradouro}" />
+                        <p:outputLabel value="#{bundle.EditCondominioLabel_nome}" for="nome" />
+                        <p:inputText id="nome" value="#{condominioController.selected.nome}" title="#{bundle.EditCondominioTitle_nome}" />
+                        <p:outputLabel value="#{bundle.EditCondominioLabel_numero}" for="numero" />
+                        <p:inputText id="numero" value="#{condominioController.selected.numero}" title="#{bundle.EditCondominioTitle_numero}" />
+                        <p:outputLabel value="#{bundle.EditCondominioLabel_sindicoId}" for="sindicoId" />
+                        <p:selectOneMenu id="sindicoId" value="#{condominioController.selected.sindicoId}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{pessoaController.itemsAvailableSelectOne}"
+                                           var="sindicoIdItem"
+                                           itemValue="#{sindicoIdItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{condominioController.update}" value="#{bundle.Save}" update="display,:CondominioListForm:datalist,:growl" oncomplete="handleSubmit(args, 'CondominioEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="CondominioEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

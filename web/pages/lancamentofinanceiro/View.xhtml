@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="LancamentofinanceiroViewDlg" widgetVar="LancamentofinanceiroViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewLancamentofinanceiroTitle}">
+            <h:form id="LancamentofinanceiroViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{lancamentofinanceiroController.selected != null}">
+                        <h:outputText value="#{bundle.ViewLancamentofinanceiroLabel_id}"/>
+                        <h:outputText value="#{lancamentofinanceiroController.selected.id}" title="#{bundle.ViewLancamentofinanceiroTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewLancamentofinanceiroLabel_datalancamento}"/>
+                        <h:outputText value="#{lancamentofinanceiroController.selected.datalancamento}" title="#{bundle.ViewLancamentofinanceiroTitle_datalancamento}"/>
+                        <h:outputText value="#{bundle.ViewLancamentofinanceiroLabel_descricao}"/>
+                        <h:outputText value="#{lancamentofinanceiroController.selected.descricao}" title="#{bundle.ViewLancamentofinanceiroTitle_descricao}"/>
+                        <h:outputText value="#{bundle.ViewLancamentofinanceiroLabel_financeiroId}"/>
+                        <h:outputText value="#{lancamentofinanceiroController.selected.financeiroId}" title="#{bundle.ViewLancamentofinanceiroTitle_financeiroId}"/>
+                        <h:outputText value="#{bundle.ViewLancamentofinanceiroLabel_lancamentoId}"/>
+                        <h:outputText value="#{lancamentofinanceiroController.selected.lancamentoId}" title="#{bundle.ViewLancamentofinanceiroTitle_lancamentoId}"/>
+                        <h:outputText value="#{bundle.ViewLancamentofinanceiroLabel_pessoaId}"/>
+                        <h:outputText value="#{lancamentofinanceiroController.selected.pessoaId}" title="#{bundle.ViewLancamentofinanceiroTitle_pessoaId}"/>
+                        <h:outputText value="#{bundle.ViewLancamentofinanceiroLabel_servicoId}"/>
+                        <h:outputText value="#{lancamentofinanceiroController.selected.servicoId}" title="#{bundle.ViewLancamentofinanceiroTitle_servicoId}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="LancamentofinanceiroViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

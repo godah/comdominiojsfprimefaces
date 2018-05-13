@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="VagasdisponivelCreateDlg" widgetVar="VagasdisponivelCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateVagasdisponivelTitle}">
+            <h:form id="VagasdisponivelCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{vagasdisponivelController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateVagasdisponivelLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{vagasdisponivelController.selected.id}" title="#{bundle.CreateVagasdisponivelTitle_id}" required="true" requiredMessage="#{bundle.CreateVagasdisponivelRequiredMessage_id}"/>
+                        <p:outputLabel value="#{bundle.CreateVagasdisponivelLabel_quantidade}" for="quantidade" />
+                        <p:inputText id="quantidade" value="#{vagasdisponivelController.selected.quantidade}" title="#{bundle.CreateVagasdisponivelTitle_quantidade}" />
+                        <p:outputLabel value="#{bundle.CreateVagasdisponivelLabel_valor}" for="valor" />
+                        <p:inputText id="valor" value="#{vagasdisponivelController.selected.valor}" title="#{bundle.CreateVagasdisponivelTitle_valor}" />
+                        <p:outputLabel value="#{bundle.CreateVagasdisponivelLabel_unidadeidId}" for="unidadeidId" />
+                        <p:selectOneMenu id="unidadeidId" value="#{vagasdisponivelController.selected.unidadeidId}" >
+                            <f:selectItems value="#{unidadeController.itemsAvailableSelectOne}"
+                                           var="unidadeidIdItem"
+                                           itemValue="#{unidadeidIdItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{vagasdisponivelController.create}" value="#{bundle.Save}" update="display,:VagasdisponivelListForm:datalist,:growl" oncomplete="handleSubmit(args,'VagasdisponivelCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="VagasdisponivelCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

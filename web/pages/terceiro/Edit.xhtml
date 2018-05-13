@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TerceiroEditDlg" widgetVar="TerceiroEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditTerceiroTitle}">
+            <h:form id="TerceiroEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{terceiroController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditTerceiroLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{terceiroController.selected.id}" title="#{bundle.EditTerceiroTitle_id}" required="true" requiredMessage="#{bundle.EditTerceiroRequiredMessage_id}"/>
+                        <p:outputLabel value="#{bundle.EditTerceiroLabel_aprovacao}" for="aprovacao" />
+                        <p:selectBooleanCheckbox id="aprovacao" value="#{terceiroController.selected.aprovacao}" />
+                        <p:outputLabel value="#{bundle.EditTerceiroLabel_descricao}" for="descricao" />
+                        <p:inputText id="descricao" value="#{terceiroController.selected.descricao}" title="#{bundle.EditTerceiroTitle_descricao}" />
+                        <p:outputLabel value="#{bundle.EditTerceiroLabel_email}" for="email" />
+                        <p:inputText id="email" value="#{terceiroController.selected.email}" title="#{bundle.EditTerceiroTitle_email}" />
+                        <p:outputLabel value="#{bundle.EditTerceiroLabel_nome}" for="nome" />
+                        <p:inputText id="nome" value="#{terceiroController.selected.nome}" title="#{bundle.EditTerceiroTitle_nome}" />
+                        <p:outputLabel value="#{bundle.EditTerceiroLabel_telefone}" for="telefone" />
+                        <p:inputText id="telefone" value="#{terceiroController.selected.telefone}" title="#{bundle.EditTerceiroTitle_telefone}" />
+                        <p:outputLabel value="#{bundle.EditTerceiroLabel_pessoaId}" for="pessoaId" />
+                        <p:selectOneMenu id="pessoaId" value="#{terceiroController.selected.pessoaId}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{pessoaController.itemsAvailableSelectOne}"
+                                           var="pessoaIdItem"
+                                           itemValue="#{pessoaIdItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{terceiroController.update}" value="#{bundle.Save}" update="display,:TerceiroListForm:datalist,:growl" oncomplete="handleSubmit(args, 'TerceiroEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TerceiroEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

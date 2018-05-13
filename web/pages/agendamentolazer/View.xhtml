@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="AgendamentolazerViewDlg" widgetVar="AgendamentolazerViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewAgendamentolazerTitle}">
+            <h:form id="AgendamentolazerViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{agendamentolazerController.selected != null}">
+                        <h:outputText value="#{bundle.ViewAgendamentolazerLabel_id}"/>
+                        <h:outputText value="#{agendamentolazerController.selected.id}" title="#{bundle.ViewAgendamentolazerTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewAgendamentolazerLabel_aprovacao}"/>
+                        <p:selectBooleanCheckbox value="#{agendamentolazerController.selected.aprovacao}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewAgendamentolazerLabel_dataaprovacao}"/>
+                        <h:outputText value="#{agendamentolazerController.selected.dataaprovacao}" title="#{bundle.ViewAgendamentolazerTitle_dataaprovacao}"/>
+                        <h:outputText value="#{bundle.ViewAgendamentolazerLabel_evento}"/>
+                        <h:outputText value="#{agendamentolazerController.selected.evento}" title="#{bundle.ViewAgendamentolazerTitle_evento}"/>
+                        <h:outputText value="#{bundle.ViewAgendamentolazerLabel_fim}"/>
+                        <h:outputText value="#{agendamentolazerController.selected.fim}" title="#{bundle.ViewAgendamentolazerTitle_fim}"/>
+                        <h:outputText value="#{bundle.ViewAgendamentolazerLabel_inicio}"/>
+                        <h:outputText value="#{agendamentolazerController.selected.inicio}" title="#{bundle.ViewAgendamentolazerTitle_inicio}"/>
+                        <h:outputText value="#{bundle.ViewAgendamentolazerLabel_areadelazerId}"/>
+                        <h:outputText value="#{agendamentolazerController.selected.areadelazerId}" title="#{bundle.ViewAgendamentolazerTitle_areadelazerId}"/>
+                        <h:outputText value="#{bundle.ViewAgendamentolazerLabel_condominioId}"/>
+                        <h:outputText value="#{agendamentolazerController.selected.condominioId}" title="#{bundle.ViewAgendamentolazerTitle_condominioId}"/>
+                        <h:outputText value="#{bundle.ViewAgendamentolazerLabel_pessoaId}"/>
+                        <h:outputText value="#{agendamentolazerController.selected.pessoaId}" title="#{bundle.ViewAgendamentolazerTitle_pessoaId}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="AgendamentolazerViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

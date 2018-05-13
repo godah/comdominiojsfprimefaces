@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ItemlancamentoViewDlg" widgetVar="ItemlancamentoViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewItemlancamentoTitle}">
+            <h:form id="ItemlancamentoViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{itemlancamentoController.selected != null}">
+                        <h:outputText value="#{bundle.ViewItemlancamentoLabel_id}"/>
+                        <h:outputText value="#{itemlancamentoController.selected.id}" title="#{bundle.ViewItemlancamentoTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewItemlancamentoLabel_descricao}"/>
+                        <h:outputText value="#{itemlancamentoController.selected.descricao}" title="#{bundle.ViewItemlancamentoTitle_descricao}"/>
+                        <h:outputText value="#{bundle.ViewItemlancamentoLabel_quantidade}"/>
+                        <h:outputText value="#{itemlancamentoController.selected.quantidade}" title="#{bundle.ViewItemlancamentoTitle_quantidade}"/>
+                        <h:outputText value="#{bundle.ViewItemlancamentoLabel_valorunit}"/>
+                        <h:outputText value="#{itemlancamentoController.selected.valorunit}" title="#{bundle.ViewItemlancamentoTitle_valorunit}"/>
+                        <h:outputText value="#{bundle.ViewItemlancamentoLabel_lancamentoId}"/>
+                        <h:outputText value="#{itemlancamentoController.selected.lancamentoId}" title="#{bundle.ViewItemlancamentoTitle_lancamentoId}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="ItemlancamentoViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

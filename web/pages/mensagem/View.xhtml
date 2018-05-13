@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="MensagemViewDlg" widgetVar="MensagemViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewMensagemTitle}">
+            <h:form id="MensagemViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{mensagemController.selected != null}">
+                        <h:outputText value="#{bundle.ViewMensagemLabel_id}"/>
+                        <h:outputText value="#{mensagemController.selected.id}" title="#{bundle.ViewMensagemTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewMensagemLabel_datacriacao}"/>
+                        <h:outputText value="#{mensagemController.selected.datacriacao}" title="#{bundle.ViewMensagemTitle_datacriacao}"/>
+                        <h:outputText value="#{bundle.ViewMensagemLabel_texto}"/>
+                        <h:outputText value="#{mensagemController.selected.texto}" title="#{bundle.ViewMensagemTitle_texto}"/>
+                        <h:outputText value="#{bundle.ViewMensagemLabel_titulo}"/>
+                        <h:outputText value="#{mensagemController.selected.titulo}" title="#{bundle.ViewMensagemTitle_titulo}"/>
+                        <h:outputText value="#{bundle.ViewMensagemLabel_condominioId}"/>
+                        <h:outputText value="#{mensagemController.selected.condominioId}" title="#{bundle.ViewMensagemTitle_condominioId}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="MensagemViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

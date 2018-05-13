@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ArealazerEditDlg" widgetVar="ArealazerEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditArealazerTitle}">
+            <h:form id="ArealazerEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{arealazerController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditArealazerLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{arealazerController.selected.id}" title="#{bundle.EditArealazerTitle_id}" required="true" requiredMessage="#{bundle.EditArealazerRequiredMessage_id}"/>
+                        <p:outputLabel value="#{bundle.EditArealazerLabel_area}" for="area" />
+                        <p:inputText id="area" value="#{arealazerController.selected.area}" title="#{bundle.EditArealazerTitle_area}" />
+                        <p:outputLabel value="#{bundle.EditArealazerLabel_descricao}" for="descricao" />
+                        <p:inputText id="descricao" value="#{arealazerController.selected.descricao}" title="#{bundle.EditArealazerTitle_descricao}" />
+                        <p:outputLabel value="#{bundle.EditArealazerLabel_tipoareaId}" for="tipoareaId" />
+                        <p:selectOneMenu id="tipoareaId" value="#{arealazerController.selected.tipoareaId}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{tipoarealazerController.itemsAvailableSelectOne}"
+                                           var="tipoareaIdItem"
+                                           itemValue="#{tipoareaIdItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{arealazerController.update}" value="#{bundle.Save}" update="display,:ArealazerListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ArealazerEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ArealazerEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

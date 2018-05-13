@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scene Scope="Project" version="2">
+    <Scope Scope="Faces Configuration Only">
+        <Node id="pages/grupo/List.xhtml" x="150" y="150" zoom="true"/>
+        <Node id="index.xhtml" x="400" y="150" zoom="true"/>
+    </Scope>
+    <Scope Scope="Project">
+        <Node id="pages/tiposervico/Create.xhtml" x="7768" y="32" zoom="true"/>
+        <Node id="pages/pessoa/Create.xhtml" x="16215" y="32" zoom="true"/>
+        <Node id="pages/pessoacondominio/Edit.xhtml" x="22786" y="32" zoom="true"/>
+        <Node id="welcomePrimefaces.xhtml" x="1573" y="32" zoom="true"/>
+        <Node id="pages/condominio/Create.xhtml" x="32622" y="32" zoom="true"/>
+        <Node id="pages/grupo/List.xhtml" x="26391" y="396" zoom="true"/>
+        <Node id="pages/vagasdisponivel/Create.xhtml" x="8944" y="32" zoom="true"/>
+        <Node id="pages/agendamentolazer/Create.xhtml" x="5028" y="32" zoom="false"/>
+        <Node id="pages/grupo/View.xhtml" x="23604" y="32" zoom="true"/>
+        <Node id="pages/vagasdisponivel/Edit.xhtml" x="23946" y="32" zoom="true"/>
+        <Node id="pages/vagasdisponivel/View.xhtml" x="11207" y="32" zoom="true"/>
+        <Node id="pages/unidade/Edit.xhtml" x="24353" y="32" zoom="true"/>
+        <Node id="pages/pessoacondominio/List.xhtml" x="27434" y="32" zoom="true"/>
+        <Node id="pages/tipoarealazer/List.xhtml" x="4639" y="32" zoom="true"/>
+        <Node id="pages/vagasdisponivel/List.xhtml" x="7362" y="32" zoom="true"/>
+        <Node id="pages/lancamento/List.xhtml" x="10426" y="32" zoom="true"/>
+        <Node id="pages/unidade/View.xhtml" x="6280" y="32" zoom="true"/>
+        <Node id="pages/pessoacondominio/View.xhtml" x="28825" y="32" zoom="true"/>
+        <Node id="pages/financeiro/Create.xhtml" x="2272" y="32" zoom="true"/>
+        <Node id="pages/unidade/List.xhtml" x="16959" y="32" zoom="true"/>
+        <Node id="pages/notificacao/Edit.xhtml" x="30701" y="32" zoom="true"/>
+        <Node id="pages/tipoarealazer/Edit.xhtml" x="21618" y="32" zoom="true"/>
+        <Node id="index.xhtml" x="26391" y="498" zoom="true"/>
+        <Node id="pages/tipounidade/Create.xhtml" x="20783" y="32" zoom="true"/>
+        <Node id="pages/notificacao/Create.xhtml" x="23212" y="32" zoom="false"/>
+        <Node id="pages/arealazer/View.xhtml" x="20037" y="32" zoom="true"/>
+        <Node id="pages/lancamento/Create.xhtml" x="22389" y="32" zoom="true"/>
+        <Node id="pages/lancamento/View.xhtml" x="25926" y="32" zoom="true"/>
+        <Node id="pages/tipoarealazer/Create.xhtml" x="11621" y="32" zoom="true"/>
+        <Node id="pages/grupo/Edit.xhtml" x="2657" y="32" zoom="true"/>
+        <Node id="pages/arealazer/List.xhtml" x="7001" y="32" zoom="true"/>
+        <Node id="pages/pessoa/View.xhtml" x="18531" y="32" zoom="true"/>
+        <Node id="pages/pessoa/List.xhtml" x="30357" y="32" zoom="true"/>
+        <Node id="pages/financeiro/Edit.xhtml" x="14376" y="32" zoom="true"/>
+        <Node id="pages/servico/Create.xhtml" x="19226" y="32" zoom="true"/>
+        <Node id="pages/servico/Edit.xhtml" x="18883" y="32" zoom="true"/>
+        <Node id="pages/itemlancamento/Edit.xhtml" x="9741" y="32" zoom="true"/>
+        <Node id="pages/mensagem/Create.xhtml" x="31861" y="32" zoom="true"/>
+        <Node id="pages/tipopessoa/Create.xhtml" x="803" y="32" zoom="true"/>
+        <Node id="pages/tiposervico/View.xhtml" x="16581" y="32" zoom="true"/>
+        <Node id="pages/terceiro/List.xhtml" x="14740" y="32" zoom="true"/>
+        <Node id="pages/terceiro/Create.xhtml" x="32252" y="32" zoom="true"/>
+        <Node id="pages/mensagem/View.xhtml" x="20406" y="32" zoom="true"/>
+        <Node id="pages/mensagem/List.xhtml" x="9372" y="32" zoom="true"/>
+        <Node id="pages/pessoacondominio/Create.xhtml" x="19590" y="32" zoom="true"/>
+        <Node id="pages/tipounidade/View.xhtml" x="17309" y="32" zoom="true"/>
+        <Node id="pages/lancamentofinanceiro/Edit.xhtml" x="24704" y="32" zoom="true"/>
+        <Node id="pages/lancamentofinanceiro/View.xhtml" x="5826" y="32" zoom="true"/>
+        <Node id="pages/condominio/List.xhtml" x="3838" y="32" zoom="true"/>
+        <Node id="pages/tipounidade/Edit.xhtml" x="15836" y="32" zoom="true"/>
+        <Node id="pages/tiposervico/List.xhtml" x="15088" y="32" zoom="true"/>
+        <Node id="pages/agendamentolazer/Edit.xhtml" x="13592" y="32" zoom="true"/>
+        <Node id="pages/tiposervico/Edit.xhtml" x="27063" y="32" zoom="true"/>
+        <Node id="pages/lancamentofinanceiro/Create.xhtml" x="3370" y="32" zoom="true"/>
+        <Node id="pages/lancamentofinanceiro/List.xhtml" x="12402" y="32" zoom="true"/>
+        <Node id="pages/terceiro/View.xhtml" x="14020" y="32" zoom="true"/>
+        <Node id="pages/tipounidade/List.xhtml" x="2992" y="32" zoom="true"/>
+        <Node id="pages/tipolancamento/Edit.xhtml" x="26309" y="32" zoom="true"/>
+        <Node id="pages/tipolancamento/View.xhtml" x="17695" y="32" zoom="true"/>
+        <Node id="pages/tipopessoa/Edit.xhtml" x="13219" y="32" zoom="true"/>
+        <Node id="pages/notificacao/List.xhtml" x="8160" y="32" zoom="true"/>
+        <Node id="pages/mensagem/Edit.xhtml" x="12032" y="32" zoom="true"/>
+        <Node id="pages/tipolancamento/List.xhtml" x="25523" y="32" zoom="true"/>
+        <Node id="pages/notificacao/View.xhtml" x="15458" y="32" zoom="true"/>
+        <Node id="pages/grupo/Create.xhtml" x="33017" y="32" zoom="true"/>
+        <Node id="pages/condominio/View.xhtml" x="22008" y="32" zoom="true"/>
+        <Node id="template.xhtml" x="10148" y="32" zoom="true"/>
+        <Node id="pages/condominio/Edit.xhtml" x="29258" y="32" zoom="true"/>
+        <Node id="pages/tipopessoa/View.xhtml" x="27859" y="32" zoom="true"/>
+        <Node id="pages/itemlancamento/View.xhtml" x="8530" y="32" zoom="true"/>
+        <Node id="pages/tipopessoa/List.xhtml" x="34" y="32" zoom="false"/>
+        <Node id="pages/financeiro/View.xhtml" x="12848" y="32" zoom="true"/>
+        <Node id="pages/itemlancamento/List.xhtml" x="10801" y="32" zoom="true"/>
+        <Node id="pages/servico/List.xhtml" x="29632" y="32" zoom="true"/>
+        <Node id="pages/agendamentolazer/List.xhtml" x="31434" y="32" zoom="true"/>
+        <Node id="pages/lancamento/Edit.xhtml" x="1197" y="32" zoom="true"/>
+        <Node id="pages/vagasdisponiveis/List.xhtml" x="150" y="150" zoom="true"/>
+        <Node id="pages/itemlancamento/Create.xhtml" x="4211" y="32" zoom="true"/>
+        <Node id="pages/terceiro/Edit.xhtml" x="5477" y="32" zoom="true"/>
+        <Node id="pages/tipolancamento/Create.xhtml" x="18106" y="32" zoom="true"/>
+        <Node id="pages/agendamentolazer/View.xhtml" x="21183" y="32" zoom="true"/>
+        <Node id="pages/tipoarealazer/View.xhtml" x="406" y="32" zoom="true"/>
+        <Node id="pages/arealazer/Edit.xhtml" x="31072" y="32" zoom="true"/>
+        <Node id="pages/unidade/Create.xhtml" x="25151" y="32" zoom="true"/>
+        <Node id="pages/arealazer/Create.xhtml" x="29974" y="32" zoom="true"/>
+        <Node id="pages/servico/View.xhtml" x="26713" y="32" zoom="true"/>
+        <Node id="pages/financeiro/List.xhtml" x="6638" y="32" zoom="true"/>
+        <Node id="pages/pessoa/Edit.xhtml" x="1927" y="32" zoom="true"/>
+    </Scope>
+    <Scope Scope="All Faces Configurations">
+        <Node id="pages/grupo/List.xhtml" x="28239" y="32" zoom="true"/>
+        <Node id="index.xhtml" x="28287" y="265" zoom="true"/>
+    </Scope>
+</Scene>
