@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ServiceorderEditDlg" widgetVar="ServiceorderEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditServiceorderTitle}">
+            <h:form id="ServiceorderEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{serviceorderController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditServiceorderLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{serviceorderController.selected.id}" title="#{bundle.EditServiceorderTitle_id}" required="true" requiredMessage="#{bundle.EditServiceorderRequiredMessage_id}"/>
+                        <p:outputLabel value="#{bundle.EditServiceorderLabel_code}" for="code" />
+                        <p:inputText id="code" value="#{serviceorderController.selected.code}" title="#{bundle.EditServiceorderTitle_code}" required="true" requiredMessage="#{bundle.EditServiceorderRequiredMessage_code}"/>
+                        <p:outputLabel value="#{bundle.EditServiceorderLabel_date}" for="date" />
+                        <p:calendar id="date" pattern="MM/dd/yyyy HH:mm:ss" value="#{serviceorderController.selected.date}" title="#{bundle.EditServiceorderTitle_date}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditServiceorderLabel_imei}" for="imei" />
+                        <p:inputText id="imei" value="#{serviceorderController.selected.imei}" title="#{bundle.EditServiceorderTitle_imei}" />
+                        <p:outputLabel value="#{bundle.EditServiceorderLabel_lockpasswd}" for="lockpasswd" />
+                        <p:inputText id="lockpasswd" value="#{serviceorderController.selected.lockpasswd}" title="#{bundle.EditServiceorderTitle_lockpasswd}" />
+                        <p:outputLabel value="#{bundle.EditServiceorderLabel_batery}" for="batery" />
+                        <p:selectBooleanCheckbox id="batery" value="#{serviceorderController.selected.batery}" required="true" requiredMessage="#{bundle.EditServiceorderRequiredMessage_batery}"/>
+                        <p:outputLabel value="#{bundle.EditServiceorderLabel_baterycode}" for="baterycode" />
+                        <p:inputText id="baterycode" value="#{serviceorderController.selected.baterycode}" title="#{bundle.EditServiceorderTitle_baterycode}" />
+                        <p:outputLabel value="#{bundle.EditServiceorderLabel_working}" for="working" />
+                        <p:selectBooleanCheckbox id="working" value="#{serviceorderController.selected.working}" required="true" requiredMessage="#{bundle.EditServiceorderRequiredMessage_working}"/>
+                        <p:outputLabel value="#{bundle.EditServiceorderLabel_chip}" for="chip" />
+                        <p:selectBooleanCheckbox id="chip" value="#{serviceorderController.selected.chip}" required="true" requiredMessage="#{bundle.EditServiceorderRequiredMessage_chip}"/>
+                        <p:outputLabel value="#{bundle.EditServiceorderLabel_charger}" for="charger" />
+                        <p:selectBooleanCheckbox id="charger" value="#{serviceorderController.selected.charger}" required="true" requiredMessage="#{bundle.EditServiceorderRequiredMessage_charger}"/>
+                        <p:outputLabel value="#{bundle.EditServiceorderLabel_sdcard}" for="sdcard" />
+                        <p:selectBooleanCheckbox id="sdcard" value="#{serviceorderController.selected.sdcard}" required="true" requiredMessage="#{bundle.EditServiceorderRequiredMessage_sdcard}"/>
+                        <p:outputLabel value="#{bundle.EditServiceorderLabel_note}" for="note" />
+                        <p:inputText id="note" value="#{serviceorderController.selected.note}" title="#{bundle.EditServiceorderTitle_note}" />
+                        <p:outputLabel value="#{bundle.EditServiceorderLabel_cwCam}" for="cwCam" />
+                        <p:selectBooleanCheckbox id="cwCam" value="#{serviceorderController.selected.cwCam}" required="true" requiredMessage="#{bundle.EditServiceorderRequiredMessage_cwCam}"/>
+                        <p:outputLabel value="#{bundle.EditServiceorderLabel_cwAudio}" for="cwAudio" />
+                        <p:selectBooleanCheckbox id="cwAudio" value="#{serviceorderController.selected.cwAudio}" required="true" requiredMessage="#{bundle.EditServiceorderRequiredMessage_cwAudio}"/>
+                        <p:outputLabel value="#{bundle.EditServiceorderLabel_cwBell}" for="cwBell" />
+                        <p:selectBooleanCheckbox id="cwBell" value="#{serviceorderController.selected.cwBell}" required="true" requiredMessage="#{bundle.EditServiceorderRequiredMessage_cwBell}"/>
+                        <p:outputLabel value="#{bundle.EditServiceorderLabel_cwMicrofone}" for="cwMicrofone" />
+                        <p:selectBooleanCheckbox id="cwMicrofone" value="#{serviceorderController.selected.cwMicrofone}" required="true" requiredMessage="#{bundle.EditServiceorderRequiredMessage_cwMicrofone}"/>
+                        <p:outputLabel value="#{bundle.EditServiceorderLabel_cwDisplay}" for="cwDisplay" />
+                        <p:selectBooleanCheckbox id="cwDisplay" value="#{serviceorderController.selected.cwDisplay}" required="true" requiredMessage="#{bundle.EditServiceorderRequiredMessage_cwDisplay}"/>
+                        <p:outputLabel value="#{bundle.EditServiceorderLabel_cwExternalsignal}" for="cwExternalsignal" />
+                        <p:selectBooleanCheckbox id="cwExternalsignal" value="#{serviceorderController.selected.cwExternalsignal}" required="true" requiredMessage="#{bundle.EditServiceorderRequiredMessage_cwExternalsignal}"/>
+                        <p:outputLabel value="#{bundle.EditServiceorderLabel_cwKeys}" for="cwKeys" />
+                        <p:selectBooleanCheckbox id="cwKeys" value="#{serviceorderController.selected.cwKeys}" required="true" requiredMessage="#{bundle.EditServiceorderRequiredMessage_cwKeys}"/>
+                        <p:outputLabel value="#{bundle.EditServiceorderLabel_cwChargecircuit}" for="cwChargecircuit" />
+                        <p:selectBooleanCheckbox id="cwChargecircuit" value="#{serviceorderController.selected.cwChargecircuit}" required="true" requiredMessage="#{bundle.EditServiceorderRequiredMessage_cwChargecircuit}"/>
+                        <p:outputLabel value="#{bundle.EditServiceorderLabel_scratchedcarcass}" for="scratchedcarcass" />
+                        <p:selectBooleanCheckbox id="scratchedcarcass" value="#{serviceorderController.selected.scratchedcarcass}" required="true" requiredMessage="#{bundle.EditServiceorderRequiredMessage_scratchedcarcass}"/>
+                        <p:outputLabel value="#{bundle.EditServiceorderLabel_brokencarcass}" for="brokencarcass" />
+                        <p:selectBooleanCheckbox id="brokencarcass" value="#{serviceorderController.selected.brokencarcass}" required="true" requiredMessage="#{bundle.EditServiceorderRequiredMessage_brokencarcass}"/>
+                        <p:outputLabel value="#{bundle.EditServiceorderLabel_authorization}" for="authorization" />
+                        <p:inputText id="authorization" value="#{serviceorderController.selected.authorization}" title="#{bundle.EditServiceorderTitle_authorization}" />
+                        <p:outputLabel value="#{bundle.EditServiceorderLabel_authorizationdate}" for="authorizationdate" />
+                        <p:calendar id="authorizationdate" pattern="MM/dd/yyyy HH:mm:ss" value="#{serviceorderController.selected.authorizationdate}" title="#{bundle.EditServiceorderTitle_authorizationdate}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditServiceorderLabel_risk}" for="risk" />
+                        <p:selectBooleanCheckbox id="risk" value="#{serviceorderController.selected.risk}" required="true" requiredMessage="#{bundle.EditServiceorderRequiredMessage_risk}"/>
+                        <p:outputLabel value="#{bundle.EditServiceorderLabel_issues}" for="issues" />
+                        <p:inputText id="issues" value="#{serviceorderController.selected.issues}" title="#{bundle.EditServiceorderTitle_issues}" required="true" requiredMessage="#{bundle.EditServiceorderRequiredMessage_issues}"/>
+                        <p:outputLabel value="#{bundle.EditServiceorderLabel_resultOk}" for="resultOk" />
+                        <p:selectBooleanCheckbox id="resultOk" value="#{serviceorderController.selected.resultOk}" />
+                        <p:outputLabel value="#{bundle.EditServiceorderLabel_resultNotfix}" for="resultNotfix" />
+                        <p:selectBooleanCheckbox id="resultNotfix" value="#{serviceorderController.selected.resultNotfix}" />
+                        <p:outputLabel value="#{bundle.EditServiceorderLabel_delivered}" for="delivered" />
+                        <p:selectBooleanCheckbox id="delivered" value="#{serviceorderController.selected.delivered}" required="true" requiredMessage="#{bundle.EditServiceorderRequiredMessage_delivered}"/>
+                        <p:outputLabel value="#{bundle.EditServiceorderLabel_deliveryforecast}" for="deliveryforecast" />
+                        <p:calendar id="deliveryforecast" pattern="MM/dd/yyyy HH:mm:ss" value="#{serviceorderController.selected.deliveryforecast}" title="#{bundle.EditServiceorderTitle_deliveryforecast}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditServiceorderLabel_undone}" for="undone" />
+                        <p:selectBooleanCheckbox id="undone" value="#{serviceorderController.selected.undone}" required="true" requiredMessage="#{bundle.EditServiceorderRequiredMessage_undone}"/>
+                        <p:outputLabel value="#{bundle.EditServiceorderLabel_abandoned}" for="abandoned" />
+                        <p:selectBooleanCheckbox id="abandoned" value="#{serviceorderController.selected.abandoned}" required="true" requiredMessage="#{bundle.EditServiceorderRequiredMessage_abandoned}"/>
+                        <p:outputLabel value="#{bundle.EditServiceorderLabel_technote}" for="technote" />
+                        <p:inputText id="technote" value="#{serviceorderController.selected.technote}" title="#{bundle.EditServiceorderTitle_technote}" />
+                        <p:outputLabel value="#{bundle.EditServiceorderLabel_signal}" for="signal" />
+                        <p:inputText id="signal" value="#{serviceorderController.selected.signal}" title="#{bundle.EditServiceorderTitle_signal}" />
+                        <p:outputLabel value="#{bundle.EditServiceorderLabel_rest}" for="rest" />
+                        <p:inputText id="rest" value="#{serviceorderController.selected.rest}" title="#{bundle.EditServiceorderTitle_rest}" />
+                        <p:outputLabel value="#{bundle.EditServiceorderLabel_clientId}" for="clientId" />
+                        <p:selectOneMenu id="clientId" value="#{serviceorderController.selected.clientId}" required="true" requiredMessage="#{bundle.EditServiceorderRequiredMessage_clientId}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{clientController.itemsAvailableSelectOne}"
+                                           var="clientIdItem"
+                                           itemValue="#{clientIdItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditServiceorderLabel_modelId}" for="modelId" />
+                        <p:selectOneMenu id="modelId" value="#{serviceorderController.selected.modelId}" required="true" requiredMessage="#{bundle.EditServiceorderRequiredMessage_modelId}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{modelController.itemsAvailableSelectOne}"
+                                           var="modelIdItem"
+                                           itemValue="#{modelIdItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditServiceorderLabel_carrierserviceId}" for="carrierserviceId" />
+                        <p:selectOneMenu id="carrierserviceId" value="#{serviceorderController.selected.carrierserviceId}" required="true" requiredMessage="#{bundle.EditServiceorderRequiredMessage_carrierserviceId}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{carrierserviceController.itemsAvailableSelectOne}"
+                                           var="carrierserviceIdItem"
+                                           itemValue="#{carrierserviceIdItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditServiceorderLabel_userId}" for="userId" />
+                        <p:selectOneMenu id="userId" value="#{serviceorderController.selected.userId}" required="true" requiredMessage="#{bundle.EditServiceorderRequiredMessage_userId}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{userController.itemsAvailableSelectOne}"
+                                           var="userIdItem"
+                                           itemValue="#{userIdItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{serviceorderController.update}" value="#{bundle.Save}" update="display,:ServiceorderListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ServiceorderEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ServiceorderEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

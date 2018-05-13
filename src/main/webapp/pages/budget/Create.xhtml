@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="BudgetCreateDlg" widgetVar="BudgetCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateBudgetTitle}">
+            <h:form id="BudgetCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{budgetController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateBudgetLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{budgetController.selected.id}" title="#{bundle.CreateBudgetTitle_id}" required="true" requiredMessage="#{bundle.CreateBudgetRequiredMessage_id}"/>
+                        <p:outputLabel value="#{bundle.CreateBudgetLabel_descr}" for="descr" />
+                        <p:inputText id="descr" value="#{budgetController.selected.descr}" title="#{bundle.CreateBudgetTitle_descr}" />
+                        <p:outputLabel value="#{bundle.CreateBudgetLabel_value}" for="value" />
+                        <p:inputText id="value" value="#{budgetController.selected.value}" title="#{bundle.CreateBudgetTitle_value}" />
+                        <p:outputLabel value="#{bundle.CreateBudgetLabel_serviceorderId}" for="serviceorderId" />
+                        <p:selectOneMenu id="serviceorderId" value="#{budgetController.selected.serviceorderId}" required="true" requiredMessage="#{bundle.EditBudgetRequiredMessage_serviceorderId}">
+                            <f:selectItems value="#{serviceorderController.itemsAvailableSelectOne}"
+                                           var="serviceorderIdItem"
+                                           itemValue="#{serviceorderIdItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{budgetController.create}" value="#{bundle.Save}" update="display,:BudgetListForm:datalist,:growl" oncomplete="handleSubmit(args,'BudgetCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="BudgetCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

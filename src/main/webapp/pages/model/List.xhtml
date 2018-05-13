@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListModelTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="ModelListForm">
+                <p:panel header="#{bundle.ListModelTitle}">
+                    <p:dataTable id="datalist" value="#{modelController.items}" var="item"
+                                 selectionMode="single" selection="#{modelController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.id}"
+                                 rows="20"
+                                 rowsPerPageTemplate="20,50,100"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column filterBy="#{item.id}" filterMatchMode="contains" filterMaxLength="6" filterStyle="width: 50px;" style="width: 60px;">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListModelTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </p:column>
+                        <p:column filterBy="#{item.descr}" filterMatchMode="contains" filterMaxLength="30" filterStyle="width: 200px;">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListModelTitle_descr}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.descr}"/>
+                        </p:column>
+                        <p:column filterBy="#{item.brandId.descr}" filterMatchMode="contains" filterMaxLength="30" filterStyle="width: 200px;" style="width: 250px;">
+                            <f:facet name="header">
+                                <h:outputText value="Marca"/>
+                            </f:facet>
+                            <h:outputText value="#{item.brandId.descr}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{modelController.prepareCreate}" update=":ModelCreateForm" oncomplete="PF('ModelCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":ModelViewForm" oncomplete="PF('ModelViewDialog').show()" disabled="#{empty modelController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":ModelEditForm" oncomplete="PF('ModelEditDialog').show()" disabled="#{empty modelController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" update=":ConfirmDel" oncomplete="PF('ConfDel').show()" disabled="#{empty modelController.selected}"/>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+            <ui:include src="ConfirmDel.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

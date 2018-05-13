@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ServiceorderViewDlg" widgetVar="ServiceorderViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewServiceorderTitle}">
+            <h:form id="ServiceorderViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{serviceorderController.selected != null}">
+                        <h:outputText value="#{bundle.ViewServiceorderLabel_id}"/>
+                        <h:outputText value="#{serviceorderController.selected.id}" title="#{bundle.ViewServiceorderTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewServiceorderLabel_code}"/>
+                        <h:outputText value="#{serviceorderController.selected.code}" title="#{bundle.ViewServiceorderTitle_code}"/>
+                        <h:outputText value="#{bundle.ViewServiceorderLabel_date}"/>
+                        <h:outputText value="#{serviceorderController.selected.date}" title="#{bundle.ViewServiceorderTitle_date}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewServiceorderLabel_imei}"/>
+                        <h:outputText value="#{serviceorderController.selected.imei}" title="#{bundle.ViewServiceorderTitle_imei}"/>
+                        <h:outputText value="#{bundle.ViewServiceorderLabel_lockpasswd}"/>
+                        <h:outputText value="#{serviceorderController.selected.lockpasswd}" title="#{bundle.ViewServiceorderTitle_lockpasswd}"/>
+                        <h:outputText value="#{bundle.ViewServiceorderLabel_batery}"/>
+                        <p:selectBooleanCheckbox value="#{serviceorderController.selected.batery}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewServiceorderLabel_baterycode}"/>
+                        <h:outputText value="#{serviceorderController.selected.baterycode}" title="#{bundle.ViewServiceorderTitle_baterycode}"/>
+                        <h:outputText value="#{bundle.ViewServiceorderLabel_working}"/>
+                        <p:selectBooleanCheckbox value="#{serviceorderController.selected.working}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewServiceorderLabel_chip}"/>
+                        <p:selectBooleanCheckbox value="#{serviceorderController.selected.chip}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewServiceorderLabel_charger}"/>
+                        <p:selectBooleanCheckbox value="#{serviceorderController.selected.charger}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewServiceorderLabel_sdcard}"/>
+                        <p:selectBooleanCheckbox value="#{serviceorderController.selected.sdcard}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewServiceorderLabel_note}"/>
+                        <h:outputText value="#{serviceorderController.selected.note}" title="#{bundle.ViewServiceorderTitle_note}"/>
+                        <h:outputText value="#{bundle.ViewServiceorderLabel_cwCam}"/>
+                        <p:selectBooleanCheckbox value="#{serviceorderController.selected.cwCam}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewServiceorderLabel_cwAudio}"/>
+                        <p:selectBooleanCheckbox value="#{serviceorderController.selected.cwAudio}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewServiceorderLabel_cwBell}"/>
+                        <p:selectBooleanCheckbox value="#{serviceorderController.selected.cwBell}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewServiceorderLabel_cwMicrofone}"/>
+                        <p:selectBooleanCheckbox value="#{serviceorderController.selected.cwMicrofone}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewServiceorderLabel_cwDisplay}"/>
+                        <p:selectBooleanCheckbox value="#{serviceorderController.selected.cwDisplay}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewServiceorderLabel_cwExternalsignal}"/>
+                        <p:selectBooleanCheckbox value="#{serviceorderController.selected.cwExternalsignal}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewServiceorderLabel_cwKeys}"/>
+                        <p:selectBooleanCheckbox value="#{serviceorderController.selected.cwKeys}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewServiceorderLabel_cwChargecircuit}"/>
+                        <p:selectBooleanCheckbox value="#{serviceorderController.selected.cwChargecircuit}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewServiceorderLabel_scratchedcarcass}"/>
+                        <p:selectBooleanCheckbox value="#{serviceorderController.selected.scratchedcarcass}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewServiceorderLabel_brokencarcass}"/>
+                        <p:selectBooleanCheckbox value="#{serviceorderController.selected.brokencarcass}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewServiceorderLabel_authorization}"/>
+                        <h:outputText value="#{serviceorderController.selected.authorization}" title="#{bundle.ViewServiceorderTitle_authorization}"/>
+                        <h:outputText value="#{bundle.ViewServiceorderLabel_authorizationdate}"/>
+                        <h:outputText value="#{serviceorderController.selected.authorizationdate}" title="#{bundle.ViewServiceorderTitle_authorizationdate}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewServiceorderLabel_risk}"/>
+                        <p:selectBooleanCheckbox value="#{serviceorderController.selected.risk}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewServiceorderLabel_issues}"/>
+                        <h:outputText value="#{serviceorderController.selected.issues}" title="#{bundle.ViewServiceorderTitle_issues}"/>
+                        <h:outputText value="#{bundle.ViewServiceorderLabel_resultOk}"/>
+                        <p:selectBooleanCheckbox value="#{serviceorderController.selected.resultOk}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewServiceorderLabel_resultNotfix}"/>
+                        <p:selectBooleanCheckbox value="#{serviceorderController.selected.resultNotfix}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewServiceorderLabel_delivered}"/>
+                        <p:selectBooleanCheckbox value="#{serviceorderController.selected.delivered}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewServiceorderLabel_deliveryforecast}"/>
+                        <h:outputText value="#{serviceorderController.selected.deliveryforecast}" title="#{bundle.ViewServiceorderTitle_deliveryforecast}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewServiceorderLabel_undone}"/>
+                        <p:selectBooleanCheckbox value="#{serviceorderController.selected.undone}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewServiceorderLabel_abandoned}"/>
+                        <p:selectBooleanCheckbox value="#{serviceorderController.selected.abandoned}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewServiceorderLabel_technote}"/>
+                        <h:outputText value="#{serviceorderController.selected.technote}" title="#{bundle.ViewServiceorderTitle_technote}"/>
+                        <h:outputText value="#{bundle.ViewServiceorderLabel_signal}"/>
+                        <h:outputText value="#{serviceorderController.selected.signal}" title="#{bundle.ViewServiceorderTitle_signal}"/>
+                        <h:outputText value="#{bundle.ViewServiceorderLabel_rest}"/>
+                        <h:outputText value="#{serviceorderController.selected.rest}" title="#{bundle.ViewServiceorderTitle_rest}"/>
+                        <h:outputText value="#{bundle.ViewServiceorderLabel_clientId}"/>
+                        <h:outputText value="#{serviceorderController.selected.clientId}" title="#{bundle.ViewServiceorderTitle_clientId}"/>
+                        <h:outputText value="#{bundle.ViewServiceorderLabel_modelId}"/>
+                        <h:outputText value="#{serviceorderController.selected.modelId}" title="#{bundle.ViewServiceorderTitle_modelId}"/>
+                        <h:outputText value="#{bundle.ViewServiceorderLabel_carrierserviceId}"/>
+                        <h:outputText value="#{serviceorderController.selected.carrierserviceId}" title="#{bundle.ViewServiceorderTitle_carrierserviceId}"/>
+                        <h:outputText value="#{bundle.ViewServiceorderLabel_userId}"/>
+                        <h:outputText value="#{serviceorderController.selected.userId}" title="#{bundle.ViewServiceorderTitle_userId}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="ServiceorderViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

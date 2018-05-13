@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListServiceorderTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="ServiceorderListForm">
+                <p:panel header="#{bundle.ListServiceorderTitle}">
+                    <p:dataTable id="datalist" value="#{serviceorderController.items}" var="item"
+                                 selectionMode="single" selection="#{serviceorderController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.id}"
+                                 rows="20"
+                                 rowsPerPageTemplate="20,50,100"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column filterBy="#{item.id}" filterMatchMode="contains" filterMaxLength="6" filterStyle="width: 50px;" style="width: 60px;">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListServiceorderTitle_code}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.code}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListServiceorderTitle_date}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.date}">
+                                <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Status"/>
+                            </f:facet>
+                            <h:outputText value="#{item.status}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Cliente"/>
+                            </f:facet>
+                            <h:outputText value="#{item.clientId.name}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Modelo"/>
+                            </f:facet>
+                            <h:outputText value="#{item.modelId.brandId.descr} / #{item.modelId.descr}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Atendente"/>
+                            </f:facet>
+                            <h:outputText value="#{item.userId.name}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListServiceorderTitle_authorization}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.authorization}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListServiceorderTitle_authorizationdate}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.authorizationdate}">
+                                <f:convertDateTime pattern="dd/MM/yyyy" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListServiceorderTitle_resultOk}"/>
+                            </f:facet>
+                            <p:selectBooleanCheckbox value="#{item.resultOk}" disabled="true"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListServiceorderTitle_resultNotfix}"/>
+                            </f:facet>
+                            <p:selectBooleanCheckbox value="#{item.resultNotfix}" disabled="true"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListServiceorderTitle_delivered}"/>
+                            </f:facet>
+                            <p:selectBooleanCheckbox value="#{item.delivered}" disabled="true"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListServiceorderTitle_deliveryforecast}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.deliveryforecast}">
+                                <f:convertDateTime pattern="dd/MM/yyyy" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListServiceorderTitle_undone}"/>
+                            </f:facet>
+                            <p:selectBooleanCheckbox value="#{item.undone}" disabled="true"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListServiceorderTitle_abandoned}"/>
+                            </f:facet>
+                            <p:selectBooleanCheckbox value="#{item.abandoned}" disabled="true"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{serviceorderController.prepareCreate}" update=":ServiceorderCreateForm" oncomplete="PF('ServiceorderCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":ServiceorderViewForm" oncomplete="PF('ServiceorderViewDialog').show()" disabled="#{empty serviceorderController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":ServiceorderEditForm" oncomplete="PF('ServiceorderEditDialog').show()" disabled="#{empty serviceorderController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" update=":ConfirmDel" oncomplete="PF('ConfDel').show()" disabled="#{(empty serviceorderController.selected) or MBSession.usuarios.usertypeId.id != 3}"/>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+            <ui:include src="ConfirmDel.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>
